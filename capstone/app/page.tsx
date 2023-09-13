@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <main>
       <div className={`flex h-screen items-center justify-center text-7xl font-semibold`}>Whispering Dutchman Distillery</div>
+      <h1>Jacob</h1>
     </main>
   )
 }
