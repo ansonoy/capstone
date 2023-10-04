@@ -1,13 +1,15 @@
 import React from "react"
 
 export interface NumberInputProps {
+  BoxText?: String 
   currentValue?: number
   inputValue?: number
 }
 
 export default function NumberInput({
   currentValue,
-  inputValue
+    inputValue,
+    inputBoxText
 }: NumberInputProps) {
   return (
     <div className="flex flex-row text-lime-400">
