@@ -26,8 +26,8 @@ export default function Product({
       <div>
         <hr></hr>
       </div>
-      <div className="flex flex-row">
-        <div className="flex">{price}</div>
+      <div className="flex flex-row justify-between">
+        <div className="flex">${price}</div>
         <div className="flex">{percentage}%</div>
       </div>
     </div>
