@@ -9,15 +9,15 @@ export default function Shop() {
         image={
           <Image
             src={ginImage}
-            width={50}
-            height={50}
+            width={300}
+            height={700}
             alt="/image/signature_gin.png"
           ></Image>
         }
         price={30}
         name="Bottle'O'Gin"
         type="Gin"
-        percentage={1000}
+        percentage={10}
       />
     </div>
   )

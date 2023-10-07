@@ -17,19 +17,23 @@ export default function Product({
   type
 }: ProductProps) {
   return (
-    <div className="flex flex-col bg-red-500">
-      <div className="flex bg-red-200">
+    <div className="flex flex-col bg-black/[0.80] text-white rounded font-serif hover:w-1/4 hover:h-3/4 group">
+        <div className="bg-black/[0.4]">
         <div>{image}</div>
       </div>
-      <div>{name}</div>
-      <div>{type}</div>
-      <div>
-        <hr></hr>
+      <div className=" italic ">{name}</div>
+      <div className=" italic ">{type}</div>
+      <div className="">
+              <hr></hr>
+              <hr></hr>
       </div>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between ">
         <div className="flex">${price}</div>
         <div className="flex">{percentage}%</div>
-      </div>
+          </div>
+          <div className=" bold rounded" >
+              <button className="invisible group-hover:visable" >Add to Cart?</button>
+        </div>
     </div>
   )
 }
