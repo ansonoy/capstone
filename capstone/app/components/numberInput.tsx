@@ -1,7 +1,7 @@
 import React from "react"
 
 export interface NumberInputProps {
-  BoxText?: String 
+  inputBoxText?: String 
   currentValue?: number
   inputValue?: number
 }
