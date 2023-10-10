@@ -11,8 +11,20 @@ datasource db {
 }
 
 model User {
-  user_id        Int      @id @default(autoincrement())
-  age       Int 
-  email     String   @unique
-  name      String
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String @unique
+}
+
+model Product {
+  id    Int    @id @default(autoincrement())
+  name  String
+  price Float
+}
+
+model Order {
+  id        Int @id @default(autoincrement())
+  userId    Int
+  productId Int
+  quantity  Int
 }
