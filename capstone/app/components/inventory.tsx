@@ -1,5 +1,5 @@
 "use client"
-
+//
 import React, { useState, useEffect } from "react"
 import { PrismaClient, Product } from "@prisma/client"
 
