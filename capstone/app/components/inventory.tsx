@@ -31,7 +31,8 @@ export default function Inventory() {
       <ul>
         {products.map((product) => (
           <li className="text-black" key={product.id}>
-            {product.name} - ${product.price}
+            {product.name} - ${product.price} - ${product.stock}
+            <button className="bg-gray-400 rounded-lg px-4 text-black">delete</button>
           </li>
         ))}
       </ul>

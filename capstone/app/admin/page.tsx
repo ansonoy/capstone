@@ -8,7 +8,14 @@ export default function Admin() {
         <h1 className="text-black">Inventory</h1>
 
         <Inventory />
-        <button className="bg-gray-400 rounded-lg px-4 text-black">save</button>
+        <form className="flex gap-2 text-black flex-wrap" action={''}>
+          <input placeholder="name" type="text" id="name" />
+          <input placeholder="price" type="text" id="price" />
+          <input placeholder="stock" type="text" id="stock" />
+          <button className="bg-gray-400 rounded-lg px-4 text-black">
+            add
+          </button>
+        </form>
       </div>
     </div>
   )
