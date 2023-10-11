@@ -1,5 +1,5 @@
 "use client"
-//
+
 import React, { useState, useEffect } from "react"
 import { PrismaClient, Product } from "@prisma/client"
 
@@ -27,10 +27,10 @@ export default function Inventory() {
 
   return (
     <div>
-      <h2>Product List</h2>
+      <h2 className="text-black">Product List</h2>
       <ul>
         {products.map((product) => (
-          <li key={product.id}>
+          <li className="text-black" key={product.id}>
             {product.name} - ${product.price}
           </li>
         ))}
