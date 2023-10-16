@@ -3,10 +3,10 @@ import NumberInput from "./components/numberInput"
 
 export default function Home() {
   return (
-    <main className={`bg-gray-700`}>
+    <main className={``}>
       <div className={`flex flex-row h-screen items-center justify-center`}>
         <h1
-          className={`text-5xl sm:text-7xl font-semibold flex flex-col bg-red-500`}
+          className={`text-5xl sm:text-7xl font-semibold flex flex-col`}
         >
           <p>Whispering</p> <p>Dutchman</p> <p>Distillery</p>
         </h1>
