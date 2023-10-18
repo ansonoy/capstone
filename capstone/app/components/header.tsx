@@ -29,7 +29,7 @@ export default function Header() {
           <Link href="/">Location</Link>
         </motion.li>
         <motion.li whileHover={{ scale: 1.1 }}>
-          <Link href="/barrel_fund">Barrel Fund</Link>
+          <Link href="/barrel_club">Barrel Club</Link>
         </motion.li>
         <motion.li whileHover={{ scale: 1.1 }}>
           <Link href="/shop">Shop</Link>
