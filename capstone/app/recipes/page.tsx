@@ -3,7 +3,7 @@ import Recipe from "../components/recipe"
 import ginImage from "@/public/signature_gin.png"
 import Image from "next/image"
 
-export default function Recipe() {
+export default function Recipes() {
   return (
     <div className={`bg-grey h-screen flex items-center `}>
       <Recipe
