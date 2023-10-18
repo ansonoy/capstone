@@ -17,8 +17,8 @@ export default function Product({
   type
 }: ProductProps) {
   return (
-    <div className="flex flex-col bg-black/[0.80] text-white rounded font-serif hover:scale-[1.05] transition-all group">
-        <div className="bg-black/[0.4]">
+    <div className="flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group">
+        <div className="">
         <div>{image}</div>
       </div>
       <div className=" italic ">{name}</div>
