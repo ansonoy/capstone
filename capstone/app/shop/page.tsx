@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function Shop() {
   return (
-    <div className={`bg-white h-screen flex items-center`}>
+    <div className={`h-screen flex items-center`}>
       <Product
         image={
           <Image
