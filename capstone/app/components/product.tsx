@@ -17,7 +17,7 @@ export default function Product({
   type
 }: ProductProps) {
   return (
-    <div className="flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group">
+    <div className="pt-4 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group">
         <div className="">
         <div>{image}</div>
       </div>
