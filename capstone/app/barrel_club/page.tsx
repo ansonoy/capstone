@@ -7,10 +7,10 @@ import { motion } from "framer-motion"
 
 export default function Barrel_Club() {
   return (
-    <main>
+    <main className="">
       <div className="h-[100rem] flex flex-col">
         <div className="flex flex-col pt-[4.5rem]">
-          <div className="h-[24rem]">
+          <div className="sm:h-[24rem]">
             <Image
               src={barrel}
               alt="Barrel Picture"
