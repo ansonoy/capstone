@@ -22,7 +22,7 @@ export default function Recipe({
   enjoyAlso
 }: RecipeProps) {
   return (
-    <div className=" grid grid-cols-2 gap-5 pt-4 pl-10 bg-gradient-to-l min-w-[70%] from-black via-gray-900 to-black text-white rounded hover:scale-[1.35] transition-all">
+    <div className=" grid grid-cols-2 gap-5 pt-4 pl-10 bg-gradient-to-l min-w-[70%] from-black via-gray-900 to-black text-white rounded scale-[1.35] transition-all">
       <div className="">
         <div className="">
           <div>{image}</div>
@@ -32,16 +32,26 @@ export default function Recipe({
         </div>
       </div>
       <div className="pr-10">
-        <div className="">Ingredients: <br></br>{ingredients}</div>
+        <div className="">
+          Ingredients: <br></br>
+          {ingredients}
+        </div>
         <hr></hr>
-        <div className="">Instructions: <br></br>{instructions}</div>
+        <div className="">
+          Instructions: <br></br>
+          {instructions}
+        </div>
         <hr></hr>
-        <div className="">Garnishings: <br></br>{garnishing}</div>
+        <div className="">
+          Garnishings: <br></br>
+          {garnishing}
+        </div>
         <hr />
-        <div className="">Enjoy Also: <br></br>{enjoyAlso}</div>
-        
+        <div className="">
+          Enjoy Also: <br></br>
+          {enjoyAlso}
+        </div>
       </div>
     </div>
-    
   )
 }
