@@ -5,25 +5,43 @@ export interface RecipeProps {
   image?: ReactNode
   name?: String
   description?: String
+  ingredients?: String
+  instructions?: String
+  garnishing?: String
+  enjoyAlso?: String
+
 }
 
 export default function Recipe({
   image,
   name,
-  description
+  description,
+  ingredients,
+  instructions,
+  garnishing,
+  enjoyAlso
 }: RecipeProps) {
   return (
-    <div className="flex flex-col bg-black/[0.80] text-white rounded font-serif hover:w-1/4 hover:h-3/4 group">
-    <div className="bg-black/[0.4]">
-      <div>{image}</div>
+    <div className=" grid grid-cols-2 gap-5 pt-4 pl-10 bg-gradient-to-l min-w-[70%] from-black via-gray-900 to-black text-white rounded hover:scale-[1.35] transition-all">
+      <div className="">
+        <div className="">
+          <div>{image}</div>
+          <hr />
+          <div className=" bold">Name: {name}</div>
+          <div className="">{description}</div>
+        </div>
+      </div>
+      <div className="pr-10">
+        <div className="">Ingredients: <br></br>{ingredients}</div>
+        <hr></hr>
+        <div className="">Instructions: <br></br>{instructions}</div>
+        <hr></hr>
+        <div className="">Garnishings: <br></br>{garnishing}</div>
+        <hr />
+        <div className="">Enjoy Also: <br></br>{enjoyAlso}</div>
+        
+      </div>
     </div>
-    <div className=" italic ">{name}</div>
-    <div className="">
-      <hr></hr>
-      <hr></hr>
-    </div>
-
-    <div className="flex">${description}</div>
-    </div>
+    
   )
 }

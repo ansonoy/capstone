@@ -1,5 +1,7 @@
 import Image from "next/image"
 import NumberInput from "./components/numberInput"
+import React from "react"
+/**import GoogleMapComponent from "./components/map" */
 
 export default function Home() {
   return (
@@ -20,7 +22,23 @@ export default function Home() {
         <h1 className={`flex justify-center text-4xl font-semibold h-[30rem]`}>
           Location
         </h1>
+        <div id="map">
+            
+        </div>
+        
+
       </div>
     </main>
   )
 }
+
+let map: google.maps.Map;
+async function initMap(): Promise<void> {
+  const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
+  map = new Map(document.getElementById("map") as HTMLElement, {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
+}
+
+initMap();
