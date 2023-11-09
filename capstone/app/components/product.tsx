@@ -18,22 +18,22 @@ export default function Product({
 }: ProductProps) {
   return (
     <div className="pt-4 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group">
-        <div className="">
+      <div className="">
         <div>{image}</div>
       </div>
       <div className=" italic ">{name}</div>
       <div className=" italic ">{type}</div>
       <div className="">
-              <hr></hr>
-              <hr></hr>
+        <hr></hr>
+        <hr></hr>
       </div>
       <div className="flex flex-row justify-between ">
         <div className="flex">${price}</div>
         <div className="flex">{percentage}%</div>
-          </div>
-          <div className=" bold rounded" >
-              <button className="invisible group-hover:visable" >Add to Cart?</button>
-        </div>
+      </div>
+      <div className=" bold rounded">
+        <button className="invisible group-hover:visable">Add to Cart?</button>
+      </div>
     </div>
   )
 }

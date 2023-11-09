@@ -3,8 +3,10 @@ import ginImage from "@/public/signature_gin.png"
 import Image from "next/image"
 import distillery from "@/public/distillery.png"
 import Heading from "../components/heading"
+import prisma from "@/lib/prisma"
+import Products from "../components/products"
 
-export default function Shop() {
+export default async function Shop() {
   return (
     <main>
       <Heading
@@ -19,77 +21,8 @@ export default function Shop() {
         header="Want to buy products?"
       />
 
-      <div className={`flex items-center justify-center px-4 space-x-2`}>
-        <Product
-          image={
-            <Image
-              src={ginImage}
-              width={300}
-              height={700}
-              alt="/image/signature_gin.png"
-            ></Image>
-          }
-          price={30}
-          name="Bottle'O'Gin"
-          type="Gin"
-          percentage={10}
-        />
-        <Product
-          image={
-            <Image
-              src={ginImage}
-              width={300}
-              height={700}
-              alt="/image/signature_gin.png"
-            ></Image>
-          }
-          price={30}
-          name="Bottle'O'Gin"
-          type="Gin"
-          percentage={10}
-        />
-        <Product
-          image={
-            <Image
-              src={ginImage}
-              width={300}
-              height={700}
-              alt="/image/signature_gin.png"
-            ></Image>
-          }
-          price={30}
-          name="Bottle'O'Gin"
-          type="Gin"
-          percentage={10}
-        />
-        <Product
-          image={
-            <Image
-              src={ginImage}
-              width={300}
-              height={700}
-              alt="/image/signature_gin.png"
-            ></Image>
-          }
-          price={30}
-          name="Bottle'O'Gin"
-          type="Gin"
-          percentage={10}
-        />
-        <Product
-          image={
-            <Image
-              src={ginImage}
-              width={300}
-              height={700}
-              alt="/image/signature_gin.png"
-            ></Image>
-          }
-          price={30}
-          name="Bottle'O'Gin"
-          type="Gin"
-          percentage={10}
-        />
+      <div className={``}>
+        <Products />
       </div>
     </main>
   )

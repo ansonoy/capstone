@@ -26,7 +26,7 @@ export default function Footer() {
               <div>T4C 0A2</div>
             </div>
           </div>
-          <div className={`flex flex-col items-center sm:items-start pb-4`}>
+          {/* <div className={`flex flex-col items-center sm:items-start pb-4`}>
             <p>
               <Link href="/process">Process</Link>
             </p>
@@ -49,7 +49,7 @@ export default function Footer() {
             <p>Terms of Service</p>
             <p>Safety</p>
             <p>Privacy</p>
-          </div>
+          </div> */}
         </div>
         <div className={`flex mt-4 justify-center sm:justify-start`}>
           <p className="text-xs">© 2023 Whispering Dutchman Distillery, all rights reserved.</p>
