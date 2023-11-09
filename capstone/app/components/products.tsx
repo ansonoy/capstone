@@ -5,7 +5,7 @@ import ginImage from "@/public/signature_gin.png"
 
 export default async function Products() {
   const product = await prisma.product.findMany({
-    where: { inventory: { not: 0 } }
+    where: { inventory: { gt: 0 } }
   })
 
   return (
