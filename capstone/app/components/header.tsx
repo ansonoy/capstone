@@ -5,6 +5,7 @@ import Image from 'next/image'
 import WDD from '@/public/WDD.png'
 import { motion } from "framer-motion"
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai"
+import SignInButton from "./signInButton"
 
 export default function Header() {
   return (
@@ -49,6 +50,9 @@ export default function Header() {
           <Link href="/account">
             <AiOutlineUser size="24" />
           </Link>
+        </motion.li>
+        <motion.li whileHover={{ scale: 1.1 }}>
+          <SignInButton />
         </motion.li>
       </ul>
     </nav>
