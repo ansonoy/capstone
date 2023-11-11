@@ -1,6 +1,3 @@
-import Image from "next/image"
-import NumberInput from "./components/numberInput"
-
 export default function Home() {
   return (
     <main className={``}>
