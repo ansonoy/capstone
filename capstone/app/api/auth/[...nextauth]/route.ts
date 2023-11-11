@@ -18,7 +18,7 @@ const handler = NextAuth({
       },
       async authorize(credentials, req) {
 
-        const res = await fetch("/api/login", {
+        const res = await fetch("http://localhost:3000/api/login", { //put production URL here later
           method: "POST",
           headers: {
             "Content-Type": "application/json",

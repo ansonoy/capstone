@@ -1,3 +1,4 @@
+"use client"
 import { signIn, signOut, useSession } from "next-auth/react"
 import React from "react"
 
@@ -6,10 +7,12 @@ const SignInButton = () => {
   if (session && session.user) {
     return (
       <div className="flex gap-4 ml-auto">
-        <div className="text-sky-400">{session.user.name}</div>
-        <button onClick={() => signOut()} className="text-red-600">
-          Sign Out
-        </button>
+        <div className="flex text-sky-400 items-center">Welcome back, {session.user.name}</div>
+        <div className="bg-white p-1 rounded-md">
+          <button onClick={() => signOut()} className="text-red-600">
+            Sign Out
+          </button>
+        </div>
       </div>
     )
   }
