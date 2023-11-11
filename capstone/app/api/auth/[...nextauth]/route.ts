@@ -17,16 +17,16 @@ const handler = NextAuth({
         }
       },
       async authorize(credentials, req) {
-
-        const res = await fetch("http://localhost:3000/api/login", { //put production URL here later
+        const res = await fetch("http://localhost:3000/api/login", {
+          //put production URL here later
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
           body: JSON.stringify({
             username: credentials?.username,
-            password: credentials?.password,
-          }),
+            password: credentials?.password
+          })
         })
 
         const user = await res.json()
@@ -39,9 +39,16 @@ const handler = NextAuth({
       }
     })
   ],
-  // session: {
-  //   strategy:"jwt"
-  // }
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user }
+    },
+
+    async session({ session, token }) {
+      session.user = token as any
+      return session
+    }
+  }
 })
 
 export { handler as GET, handler as POST }
