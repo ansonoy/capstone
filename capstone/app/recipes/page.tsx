@@ -1,3 +1,4 @@
+"use client"
 import React from "react"
 import Recipe from "../components/recipe"
 import ginImage from "@/public/signature_gin.png"
@@ -14,7 +15,8 @@ export default function Recipes() {
             src={recipes}
             alt="Barrel Picture"
             quality={95}
-            className="w-full object-contain"
+            className="w-full object-contain transition-opacity opacity-0 duration-[1s]"
+            onLoadingComplete={(image) => image.classList.remove("opacity-0")}
           />
         }
         header="Need help creating cocktails?"
