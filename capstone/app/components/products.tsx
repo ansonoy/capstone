@@ -1,7 +1,10 @@
 import React from "react"
 import prisma from "@/lib/prisma"
 import Image from "next/image"
-import ginImage from "@/public/signature_gin.png"
+import sigGin from "@/public/signature_gin.png"
+import pepVodka from "@/public/peppermint_vodka.png"
+import canVodka from "@/public/canadian_vodka.png"
+import winRum from "@/public/winter_spice_rum.png"
 
 export default async function Products() {
   const product = await prisma.product.findMany({
@@ -12,9 +15,10 @@ export default async function Products() {
     <div>
       <ul className="flex flex-wrap justify-center gap-3 text-lg text-gray-800">
         {product.map((product) => (
-          <li className="pt-4 p-2 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group">
+          <li className="pt-4 p-2 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group"
+          >
             <Image
-              src={ginImage}
+              src={sigGin}
               width={300}
               height={700}
               alt="/image/signature_gin.png"
