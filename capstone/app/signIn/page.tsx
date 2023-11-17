@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react"
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 
 const SignInPage = () => {
-  //grab user inputs, give them to signIn function
+  //grab user inputs, give them to signIn function.
 
   const userName = useRef("")
   const pass = useRef("")
