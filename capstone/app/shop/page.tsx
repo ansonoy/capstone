@@ -1,12 +1,11 @@
-import Product from "../components/product"
-import ginImage from "@/public/signature_gin.png"
 import Image from "next/image"
 import distillery from "@/public/distillery.png"
 import Heading from "../components/heading"
-import prisma from "@/lib/prisma"
-import Products from "../components/products"
+import Products from "../components/products-card"
+import getProducts from "@/action/get-products"
 
 export default async function Shop() {
+  const products = await getProducts()
   return (
     <main>
       <Heading
@@ -22,7 +21,7 @@ export default async function Shop() {
       />
 
       <div className={``}>
-        <Products />
+        <Products product={products} />
       </div>
     </main>
   )
