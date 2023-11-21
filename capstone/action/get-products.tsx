@@ -1,4 +1,3 @@
-import React from "react"
 import { Product } from "@/lib/types"
 import prisma from "@/lib/prisma"
 
