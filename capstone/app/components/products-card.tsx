@@ -3,9 +3,6 @@
 import React from "react"
 import Image from "next/image"
 import sigGin from "@/public/signature_gin.png"
-import pepVodka from "@/public/peppermint_vodka.png"
-import canVodka from "@/public/canadian_vodka.png"
-import winRum from "@/public/winter_spice_rum.png"
 import { useRouter } from "next/navigation"
 import { Product } from "@/lib/types"
 import { useProductIdContext } from "@/context/product-id-context"
@@ -23,17 +20,17 @@ export default function Products({ product }: ProductsProps) {
       <ul className="flex flex-wrap justify-center gap-3 text-lg text-gray-800">
         {product.map((product) => (
           <div
-            className="pt-4 p-2 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group"
+            className="pt-4 p-2 flex flex-col bg-gradient-to-l h-[27rem] from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group"
             onClick={() => {
               router.push(`/shop/${product.id}`)
               setProductId(product.id)
             }}
           >
             <Image
-              src={sigGin}
+              src={product.imageurl}
               width={300}
               height={700}
-              alt="product image"
+              alt={product.name}
             />
             <div className=" ">{product.name}</div>
             <div className=" ">{product.type}</div>

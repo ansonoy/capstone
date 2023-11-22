@@ -58,13 +58,16 @@ model VerificationToken {
 }
 
 model Product {
-  id        String     @id @default(cuid())
-  name      String
-  type      String
-  price     Float
-  inventory Int
-  order     Order[]
-  cart      Cart[]
+  id          String  @id @default(cuid())
+  name        String
+  type        String
+  price       Float
+  inventory   Int
+  description String
+  percentage  Int
+  imageurl    String
+  order       Order[]
+  cart        Cart[]
 }
 
 model Order {
