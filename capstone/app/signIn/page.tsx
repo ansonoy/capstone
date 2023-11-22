@@ -6,7 +6,7 @@ import Image from "next/image"
 import { signIn } from "next-auth/react"
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 
-const SignInPage = () => {
+const SignIn = () => {
   //grab user inputs, give them to signIn function.
 
   const userName = useRef("")
@@ -76,4 +76,4 @@ const SignInPage = () => {
   )
 }
 
-export default SignInPage
+export default SignIn
