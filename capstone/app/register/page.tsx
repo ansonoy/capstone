@@ -40,7 +40,7 @@ const Register = () => {
             ></Image>
             <h1 className="text-2xl font-bold">Create an account</h1>
             <Link href="signIn" className="text-orange-500 hover:underline">
-              Already have an account? Sign-in
+              Already have an account? <span className="font-bold">Sign in</span>
             </Link>
           </div>
           <div className="grid gap-6">
