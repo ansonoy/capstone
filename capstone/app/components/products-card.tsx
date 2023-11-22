@@ -25,7 +25,7 @@ export default function Products({ product }: ProductsProps) {
           <div
             className="pt-4 p-2 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group"
             onClick={() => {
-              router.push(`/shop/${product?.id}`)
+              router.push(`/shop/${product.id}`)
               setProductId(product.id)
             }}
           >
@@ -42,7 +42,7 @@ export default function Products({ product }: ProductsProps) {
               <hr></hr>
             </div>
             <div className="flex flex-row justify-between ">
-              <div className="flex">{product.price}</div>
+              <div className="flex">${product.price}</div>
             </div>
           </div>
         ))}
