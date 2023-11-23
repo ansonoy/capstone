@@ -8,8 +8,12 @@ import { useState } from "react"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import { Button } from "../components/ui/button"
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form"
+import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { toast } from "react-hot-toast"
 
 const SignIn = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const {
     register,
@@ -22,7 +26,27 @@ const SignIn = () => {
     }
   })
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data)
+  const router = useRouter()
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setIsLoading(true)
+    signIn("credentials", {
+      ...data,
+      redirect: false
+    }).then((callback) => {
+      setIsLoading(false)
+
+      if (callback?.ok) {
+        router.push("/")
+        router.refresh()
+        console.log("logged in.")
+        toast.success("Logged in!")
+      }
+      if (callback?.error) {
+        toast.error(callback.error)
+      }
+    })
+  }
 
   return (
     <>
@@ -46,6 +70,7 @@ const SignIn = () => {
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2 relative">
                   <Input
+                    disabled={isLoading}
                     placeholder="Email"
                     label="Email"
                     required
@@ -66,6 +91,7 @@ const SignIn = () => {
                 </div>
                 <div className="grid gap-1 py-2 relative">
                   <Input
+                    disabled={isLoading}
                     placeholder="Password"
                     label="Password"
                     required
@@ -96,13 +122,13 @@ const SignIn = () => {
                     )}
                   </button>
                 </div>
-                
+
                 <Button
                   onClick={handleSubmit(onSubmit)}
                   variant="outline"
                   className="hover:text-orange-500 mt-2 hover:ring-orange-500 hover:border-orange-500 ring-2 ring-transparent hover:bg-black bg-black"
                 >
-                  Sign In
+                  {isLoading ? "Loading..." : "Sign In"}
                 </Button>
               </div>
             </form>

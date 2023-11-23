@@ -5,6 +5,8 @@ import Header from "./components/header"
 import Footer from "./components/footer"
 import Providers from "./components/providers"
 import { Toaster } from "react-hot-toast"
+import { getCurrentUser } from "@/action/getCurrentUser"
+import { SafeUser } from "@/types"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -13,18 +15,21 @@ export const metadata: Metadata = {
   description: "Whispering Dutchman Distillery"
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: {
   children: React.ReactNode
 }) {
+  const currentUser = await getCurrentUser()
+  console.log("user<<<", currentUser)
+
   return (
     <html lang="en">
       <body
         className={`${inter.className} bg-gradient-to-b from-stone-700 to-black text-gray-50 text-opacity-90`}
       >
         <Providers>
-          <Header />
+          <Header currentUser={currentUser} />
           <Toaster
             toastOptions={{
               className: "",

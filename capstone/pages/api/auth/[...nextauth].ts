@@ -1,10 +1,10 @@
-import NextAuth from "next-auth"
+import NextAuth, { AuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "@/lib/prisma"
 import bcrypt from "bcrypt"
 
-export default NextAuth({
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -21,7 +21,7 @@ export default NextAuth({
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials.password) {
-          throw new Error("Invalid email or password ONE")
+          throw new Error("Invalid email or password")
         }
         const user = await prisma.user.findUnique({
           where: {
@@ -30,7 +30,7 @@ export default NextAuth({
         })
 
         if (!user || !user?.password) {
-          throw new Error("Invalid email or password TWO")
+          throw new Error("Invalid email or password")
         }
 
         const isCorrectPassword = await bcrypt.compare(
@@ -38,7 +38,7 @@ export default NextAuth({
           user.password
         )
         if (!isCorrectPassword) {
-          throw new Error("Invalid email or password THREE")
+          throw new Error("Invalid email or password")
         }
         return user
       }
@@ -52,4 +52,6 @@ export default NextAuth({
     strategy: "jwt"
   },
   secret: process.env.NEXTAUTH_SECRET
-})
+}
+
+export default NextAuth(authOptions)

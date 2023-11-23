@@ -1,5 +1,5 @@
 "use client"
-import React from "react"
+import React, { useContext } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import WDD from "@/public/WDD.png"
@@ -7,8 +7,13 @@ import { motion } from "framer-motion"
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai"
 import { usePathname } from "next/navigation"
 import UserMenu from "./userMenu"
+import { SafeUser } from "@/types"
 
-export default function Header() {
+interface HeaderProps {
+  currentUser: SafeUser | null
+}
+
+export default function Header({ currentUser }: HeaderProps) {
   const hiddenHeader = ["/admin", "/account", "/cart"]
   const isHeaderHidden = hiddenHeader.includes(usePathname())
 
@@ -52,7 +57,7 @@ export default function Header() {
               </Link>
             </motion.li>
             <motion.li whileHover={{ scale: 1.0 }}>
-              <UserMenu />
+              <UserMenu currentUser={currentUser} />
             </motion.li>
           </ul>
         </nav>
