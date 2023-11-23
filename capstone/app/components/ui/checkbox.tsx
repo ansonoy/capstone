@@ -5,13 +5,15 @@ export interface CheckboxProps {
   className?: string
   register: UseFormRegister<FieldValues>
   errors: FieldErrors
+  disabled: boolean
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
   id,
   className,
   register,
-  errors
+  errors,
+  disabled
 }) => {
   return (
     <input

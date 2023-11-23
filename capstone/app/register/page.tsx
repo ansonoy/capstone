@@ -9,8 +9,13 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import { Button } from "../components/ui/button"
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form"
 import Checkbox from "../components/ui/checkbox"
+import axios from "axios"
+import { toast } from "react-hot-toast"
+import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 const Register = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const {
     register,
@@ -24,7 +29,30 @@ const Register = () => {
     }
   })
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data)
+  const router = useRouter()
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    axios.post("/api/register", data).then(() => {
+      toast.success("Account created!")
+
+      signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false
+      }).then((callback) => {
+        if (callback?.ok) {
+          router.push("/")
+          router.refresh()
+          toast.success("Logged in!")
+        }
+        if (callback?.error) {
+          toast.error(callback.error)
+        }
+      })
+    }).catch(() => toast.error("An error occurred.")).finally(() => {
+      setIsLoading
+    })
+  }
 
   return (
     <>
@@ -40,7 +68,8 @@ const Register = () => {
             ></Image>
             <h1 className="text-2xl font-bold">Create an account</h1>
             <Link href="signIn" className="text-orange-500 hover:underline">
-              Already have an account? <span className="font-bold">Sign in</span>
+              Already have an account?{" "}
+              <span className="font-bold">Sign in</span>
             </Link>
           </div>
           <div className="grid gap-6">
@@ -48,6 +77,7 @@ const Register = () => {
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2 relative">
                   <Input
+                    disabled={isLoading}
                     placeholder="Name"
                     label="name"
                     required
@@ -68,6 +98,7 @@ const Register = () => {
                 </div>
                 <div className="grid gap-1 py-2 relative">
                   <Input
+                    disabled={isLoading}
                     placeholder="Email"
                     label="Email"
                     required
@@ -88,6 +119,7 @@ const Register = () => {
                 </div>
                 <div className="grid gap-1 py-2 relative">
                   <Input
+                    disabled={isLoading}
                     placeholder="Password"
                     label="Password"
                     required
@@ -119,7 +151,13 @@ const Register = () => {
                   </button>
                 </div>
                 <div className="flex flex-row">
-                  <Checkbox id="terms" className="mr-2 mt-1" register={register} errors={errors} />
+                  <Checkbox
+                    disabled={isLoading}
+                    id="terms"
+                    className="mr-2 mt-1"
+                    register={register}
+                    errors={errors}
+                  />
                   <div className="">
                     <label
                       htmlFor="terms"
@@ -142,7 +180,7 @@ const Register = () => {
                   variant="outline"
                   className="hover:text-orange-500 mt-2 hover:ring-orange-500 hover:border-orange-500 ring-2 ring-transparent hover:bg-black bg-black"
                 >
-                  Sign Up
+                  {isLoading ? "Loading..." : "Sign Up"}
                 </Button>
               </div>
             </form>
