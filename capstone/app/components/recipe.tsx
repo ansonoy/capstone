@@ -22,7 +22,7 @@ export default function Recipe({
   enjoyAlso
 }: RecipeProps) {
   return (
-    <div className=" grid grid-cols-2 gap-5 pt-4 pl-10 bg-gradient-to-l min-w-[70%] from-black via-gray-900 to-black text-white rounded scale-[1.35] transition-all">
+    <div className=" grid grid-cols-2 gap-5 pt-4 pl-10 bg-gradient-to-l min-w-[70%] from-black via-gray-900 to-black text-white rounded scale-[1.05] transition-all">
       <div className="">
         <div className="">
           <div>{image}</div>

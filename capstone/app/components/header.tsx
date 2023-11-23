@@ -9,12 +9,14 @@ import { usePathname } from "next/navigation"
 import UserMenu from "./userMenu"
 import { SafeUser } from "@/types"
 
+
 interface HeaderProps {
   currentUser: SafeUser | null
 }
 
 export default function Header({ currentUser }: HeaderProps) {
-  const hiddenHeader = ["/admin", "/account", "/cart", null]
+  const hiddenHeader = ["/admin", null]
+
   const isHeaderHidden = hiddenHeader.includes(usePathname())
 
   return (
@@ -23,7 +25,7 @@ export default function Header({ currentUser }: HeaderProps) {
         <nav
           className={`px-auto py-4 fixed top-0 left-0 right-0 backdrop-blur-lg z-[999]`}
         >
-          <ul className="flex items-center justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-xs sm:text-base md:text-lg font-semibold">
+          <ul className="flex flex-wrap items-center justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 text-xs sm:text-base md:text-lg font-semibold">
             <motion.li whileHover={{ scale: 1.1 }}>
               <Link href="/">
                 <Image

@@ -1,12 +1,11 @@
-import Product from "../components/product"
-import ginImage from "@/public/signature_gin.png"
 import Image from "next/image"
 import distillery from "@/public/distillery.png"
 import Heading from "../components/heading"
-import prisma from "@/lib/prisma"
-import Products from "../components/products"
+import Products from "../components/products-card"
+import getProducts from "@/action/get-products"
 
 export default async function Shop() {
+  const products = await getProducts()
   return (
     <main>
       <Heading
@@ -19,10 +18,10 @@ export default async function Shop() {
           />
         }
         header="Want to buy products?"
+        text="Take a look at our different Gin and Vodka products. Each season we have different types of liquor available."
       />
-
-      <div className={``}>
-        <Products />
+      <div>
+        <Products product={products} />
       </div>
     </main>
   )
