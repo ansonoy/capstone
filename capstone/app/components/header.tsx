@@ -14,7 +14,7 @@ interface HeaderProps {
 }
 
 export default function Header({ currentUser }: HeaderProps) {
-  const hiddenHeader = ["/admin", "/account", "/cart"]
+  const hiddenHeader = ["/admin", "/account", "/cart", null]
   const isHeaderHidden = hiddenHeader.includes(usePathname())
 
   return (
