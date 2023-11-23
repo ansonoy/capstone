@@ -31,7 +31,7 @@ export default function AddtoCartButton({
       <h2 className="pb-2">Quantity:</h2>
       <input
         type="number"
-        className="text-black rounded-xl h-[rem] w-[5rem] pl-4 bg-gray-200"
+        className="text-black rounded-xl h-[2.5rem] w-[5rem] pl-4 bg-gray-200"
         defaultValue="1"
         value={quantity}
         onChange={handleQuantityChange}
@@ -41,7 +41,7 @@ export default function AddtoCartButton({
       <hr className="my-4 w-2/3" />
       <div className="flex items-center gap-2">
         <button
-          className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] text-white rounded-2xl ouline-none transition-all focus:scale-110 hover:scale-110 active:scale-105 bg-white bg-opacity-10 disabled:scale-100 disabled:bg-opacity-65"
+          className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] text-white rounded-2xl ouline-none transition-all focus:scale-110 hover:scale-110 active:scale-105 bg-orange-500  disabled:scale-100 disabled:bg-opacity-65"
           onClick={() => {
             startTransition(async () => {
               await incrementProductQuantity(productId, quantity)

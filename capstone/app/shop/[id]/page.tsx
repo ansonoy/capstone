@@ -19,8 +19,8 @@ export default async function ProductPage({
 
 
   return (
-    <div className="flex pt-32 justify-center items-center flex-col lg:flex-row">
-      <section className="w-full flex justify-end m-4">
+    <div className="flex justify-center items-center flex-col lg:flex-row h-auto sm:h-screen pb-56 lg:pb-0 lg:pt-0 pt-32">
+      <section className="w-full flex lg:justify-end m-4">
         <div className="bg-gradient-to-l from-black via-gray-900 to-black rounded-2xl pb-4 pt-8">
           <Image
             src={product.imageurl}
@@ -30,7 +30,7 @@ export default async function ProductPage({
           />
         </div>
       </section>
-      <section className="w-full flex m-4 h-[35rem] flex-col">
+      <section className="w-full flex m-4 h-[35rem] flex-col pl-12 lg:pl-0">
         <h1 className="font-semibold text-xl opacity-80">
           Whispering Dutchman
         </h1>
