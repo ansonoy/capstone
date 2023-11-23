@@ -5,8 +5,8 @@ import Image from "next/image"
 import WDD from "@/public/WDD.png"
 import { motion } from "framer-motion"
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai"
-import SignInButton from "./signInButton"
 import { usePathname } from "next/navigation"
+import UserMenu from "./userMenu"
 
 export default function Header() {
   const hiddenHeader = ["/admin", "/account", "/cart"]
@@ -28,12 +28,6 @@ export default function Header() {
                   alt="/images/WDD.png"
                 ></Image>
               </Link>
-            </motion.li>
-            <motion.li whileHover={{ scale: 1.1 }}>
-              <Link href="/">The Story</Link>
-            </motion.li>
-            <motion.li whileHover={{ scale: 1.1 }}>
-              <Link href="/">Location</Link>
             </motion.li>
             <motion.li whileHover={{ scale: 1.1 }}>
               <Link href="/barrel_club">Barrel Club</Link>
@@ -58,7 +52,7 @@ export default function Header() {
               </Link>
             </motion.li>
             <motion.li whileHover={{ scale: 1.1 }}>
-              <SignInButton />
+              <UserMenu />
             </motion.li>
           </ul>
         </nav>

@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import Header from "./components/header"
 import Footer from "./components/footer"
 import Providers from "./components/providers"
+import { Toaster } from "react-hot-toast"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -24,6 +25,17 @@ export default function RootLayout({
       >
         <Providers>
           <Header />
+          <Toaster
+            toastOptions={{
+              className: "",
+              style: {
+                border: "2px solid #F97316",
+                padding: "12px",
+                color: "white",
+                background: "#1C1917"
+              }
+            }}
+          />
           {children}
           <Footer />
         </Providers>

@@ -32,26 +32,34 @@ const Register = () => {
   const router = useRouter()
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    axios.post("/api/register", data).then(() => {
-      toast.success("Account created!")
+    setIsLoading(true)
 
-      signIn("credentials", {
-        email: data.email,
-        password: data.password,
-        redirect: false
-      }).then((callback) => {
-        if (callback?.ok) {
-          router.push("/")
-          router.refresh()
-          toast.success("Logged in!")
-        }
-        if (callback?.error) {
-          toast.error(callback.error)
-        }
+    axios
+      .post("/api/register", data)
+      .then(() => {
+        console.log("account created.")
+        toast.success("Account created!")
+
+        signIn("credentials", {
+          email: data.email,
+          password: data.password,
+          redirect: false
+        }).then((callback) => {
+          if (callback?.ok) {
+            router.push("/")
+            router.refresh()
+            console.log("logged in.")
+            toast.success("Logged in!")
+          }
+          if (callback?.error) {
+            toast.error(callback.error)
+          }
+        })
       })
-    }).catch(() => toast.error("An error occurred.")).finally(() => {
-      setIsLoading
-    })
+      .catch(() => toast.error("An error occurred."))
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   return (
