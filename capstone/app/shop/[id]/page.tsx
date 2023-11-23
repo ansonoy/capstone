@@ -2,7 +2,8 @@ import { notFound } from "next/navigation"
 import React from "react"
 import prisma from "@/lib/prisma"
 import Image from "next/image"
-import vodka from "@/public/signature_gin.png"
+import AddtoCartButton from "./AddtoCartButton"
+import { incrementProductQuantity } from "./actions"
 
 interface ProductPageProps {
   params: {
@@ -19,7 +20,7 @@ export default async function ProductPage({
   return (
     <div className="flex pt-32 justify-center items-center flex-col lg:flex-row">
       <section className="w-full flex justify-end m-4">
-        <div className="bg-gradient-to-l from-black via-gray-900 to-black rounded-2xl py-4 ">
+        <div className="bg-gradient-to-l from-black via-gray-900 to-black rounded-2xl pb-4 pt-8">
           <Image src={product.imageurl} width={550} height={550} alt={product.name} />
         </div>
       </section>
@@ -35,7 +36,8 @@ export default async function ProductPage({
             <span className="text-md opacity-80">ALC./VOL.</span>
           </h2>
         </div>
-        <p className="text-lg w-2/3 pt-12">{product.description}</p>
+        <p className="text-lg w-2/3 pt-12 pb-4">{product.description}</p>
+        <AddtoCartButton productId={product.id} incrementProductQuantity={incrementProductQuantity}/>
       </section>
     </div>
   )

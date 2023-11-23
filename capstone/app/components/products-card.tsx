@@ -2,10 +2,8 @@
 
 import React from "react"
 import Image from "next/image"
-import sigGin from "@/public/signature_gin.png"
 import { useRouter } from "next/navigation"
 import { Product } from "@/lib/types"
-import { useProductIdContext } from "@/context/product-id-context"
 
 type ProductsProps = {
   product: Product[]
@@ -13,23 +11,21 @@ type ProductsProps = {
 
 export default function Products({ product }: ProductsProps) {
   const router = useRouter()
-  const { setProductId } = useProductIdContext()
 
   return (
     <section>
-      <ul className="flex flex-wrap justify-center gap-3 text-lg text-gray-800">
+      <ul className="flex flex-wrap gap-3 justify-center text-lg text-gray-800">
         {product.map((product) => (
           <div
-            className="pt-4 p-2 flex flex-col bg-gradient-to-l h-[27rem] from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group"
+            className="pt-4 p-2 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group"
             onClick={() => {
               router.push(`/shop/${product.id}`)
-              setProductId(product.id)
             }}
           >
             <Image
               src={product.imageurl}
               width={300}
-              height={700}
+              height={300}
               alt={product.name}
             />
             <div className=" ">{product.name}</div>
@@ -38,7 +34,7 @@ export default function Products({ product }: ProductsProps) {
               <hr></hr>
               <hr></hr>
             </div>
-            <div className="flex flex-row justify-between ">
+            <div className="flex flex-row justify-between">
               <div className="flex">${product.price}</div>
             </div>
           </div>
