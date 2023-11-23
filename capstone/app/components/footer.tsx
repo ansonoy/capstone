@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 export default function Footer() {
-  const hiddenFooter = ["/admin"]
+  const hiddenFooter = ["/admin", null]
   const isFooterHidden = hiddenFooter.includes(usePathname())
   return (
     <>
