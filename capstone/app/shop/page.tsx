@@ -18,9 +18,9 @@ export default async function Shop() {
           />
         }
         header="Want to buy products?"
+        text="Take a look at our different Gin and Vodka products. Each season we have different types of liquor available."
       />
-
-      <div className={``}>
+      <div>
         <Products product={products} />
       </div>
     </main>

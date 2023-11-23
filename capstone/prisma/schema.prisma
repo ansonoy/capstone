@@ -58,31 +58,43 @@ model VerificationToken {
 }
 
 model Product {
-  id        String     @id @default(cuid())
-  name      String
-  type      String
-  price     Float
-  inventory Int
-  order     Order[]
-  cart      Cart[]
+  id          String     @id @default(cuid())
+  name        String
+  type        String
+  price       Float
+  inventory   Int
+  description String
+  percentage  Int
+  imageurl    String
+  CartItem    CartItem[]
+
+  @@map("products")
 }
 
 model Order {
-  id        Int      @id @default(autoincrement())
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    String?
-  Product   Product? @relation(fields: [ProductId], references: [id])
-  ProductId String?
-  quantity  Int
+  id     Int     @id @default(autoincrement())
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
 }
 
 model Cart {
-  id        Int      @id @default(autoincrement())
-  Product   Product? @relation(fields: [ProductId], references: [id])
-  ProductId String?
-  quantity  Int
-  User      User?    @relation(fields: [userId], references: [id])
+  id        String     @id @default(cuid())
+  items     CartItem[]
+  User      User?      @relation(fields: [userId], references: [id])
   userId    String?
-  subtotal  Float
-  total     Float
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@map("carts")
+}
+
+model CartItem {
+  id        String  @id @default(cuid())
+  Product   Product @relation(fields: [ProductId], references: [id], onDelete: Cascade)
+  ProductId String
+  quantity  Int
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  cartId    String
+
+  @@map("cartitems")
 }

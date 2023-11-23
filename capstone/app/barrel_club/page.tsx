@@ -24,7 +24,16 @@ export default function Barrel_Club() {
             initial 10 investors, of which we have already sold 6 (thank you!!).
             Please contact us at 403-830-5663 for more information. Thank you!"
       />
-      <div className="h-[30rem]"></div>
+      <div className="h-[30rem] flex flex-col">
+        <div>Barrel Club 1400</div>
+        <div>CA$1,400.00</div>
+        <div>What you get!</div>
+        <div>24 (750ml) custom labeled bottles. - Valued at $74.95/bottle.</div>
+        <div>
+          4 (375) ml bottles per year, for three years, of our current or new
+          release Gin and Vodka. Valued at $24.95/ bottles.
+        </div>
+      </div>
     </main>
   )
 }
