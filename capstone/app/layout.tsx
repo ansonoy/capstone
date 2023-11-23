@@ -3,10 +3,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Header from "./components/header"
 import Footer from "./components/footer"
-import Providers from "./components/providers"
 import { Toaster } from "react-hot-toast"
 import { getCurrentUser } from "@/action/getCurrentUser"
-import { SafeUser } from "@/types"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -28,22 +26,20 @@ export default async function RootLayout({
       <body
         className={`${inter.className} bg-gradient-to-b from-stone-700 to-black text-gray-50 text-opacity-90`}
       >
-        <Providers>
-          <Header currentUser={currentUser} />
-          <Toaster
-            toastOptions={{
-              className: "",
-              style: {
-                border: "2px solid #F97316",
-                padding: "12px",
-                color: "white",
-                background: "#1C1917"
-              }
-            }}
-          />
-          {children}
-          <Footer />
-        </Providers>
+        <Header currentUser={currentUser} />
+        <Toaster
+          toastOptions={{
+            className: "",
+            style: {
+              border: "2px solid #F97316",
+              padding: "12px",
+              color: "white",
+              background: "#1C1917"
+            }
+          }}
+        />
+        {children}
+        <Footer />
       </body>
     </html>
   )
