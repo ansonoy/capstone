@@ -51,11 +51,6 @@ export default function Header({ currentUser }: HeaderProps) {
                 <AiOutlineShoppingCart size="24" />
               </Link>
             </motion.li>
-            <motion.li whileHover={{ scale: 1.1 }}>
-              <Link href="/account">
-                <AiOutlineUser size="24" />
-              </Link>
-            </motion.li>
             <motion.li whileHover={{ scale: 1.0 }}>
               <UserMenu currentUser={currentUser} />
             </motion.li>
