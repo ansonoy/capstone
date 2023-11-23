@@ -14,10 +14,10 @@ export default function Products({ product }: ProductsProps) {
 
   return (
     <section>
-      <ul className="flex flex-wrap gap-3 justify-center text-lg text-gray-800">
+      <ul className="flex flex-wrap gap-3 justify-center text-lg text-gray-800 ">
         {product.map((product) => (
           <div
-            className="pt-4 p-2 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group"
+            className="pt-4 p-2 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group cursor-pointer"
             onClick={() => {
               router.push(`/shop/${product.id}`)
             }}
