@@ -9,7 +9,7 @@ import SignInButton from "./signInButton"
 import { usePathname } from "next/navigation"
 
 export default function Header() {
-  const hiddenHeader = ["/admin", "/account", "/cart"]
+  const hiddenHeader = ["/admin"]
   const isHeaderHidden = hiddenHeader.includes(usePathname())
 
   return (
