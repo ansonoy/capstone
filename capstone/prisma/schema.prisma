@@ -42,6 +42,9 @@ model User {
   emailVerified DateTime?
   password      String
   image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt @default(now())
+  role          Role      @default(USER)
   cart          Cart[]
   order         Order[]
   accounts      Account[]
@@ -97,4 +100,9 @@ model CartItem {
   cartId    String
 
   @@map("cartitems")
+}
+
+enum Role {
+  USER
+  ADMIN
 }
