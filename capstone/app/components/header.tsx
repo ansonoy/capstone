@@ -51,7 +51,7 @@ export default function Header() {
                 <AiOutlineUser size="24" />
               </Link>
             </motion.li>
-            <motion.li whileHover={{ scale: 1.1 }}>
+            <motion.li whileHover={{ scale: 1.0 }}>
               <UserMenu />
             </motion.li>
           </ul>

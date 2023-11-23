@@ -4,6 +4,7 @@ import { useCallback, useState } from "react"
 import { AiOutlineUser } from "react-icons/ai"
 import MenuItem from "./menuItem"
 import { signOut } from "next-auth/react"
+import BackDrop from "./backDrop"
 
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,16 +37,17 @@ const UserMenu = () => {
               </MenuItem>
             </div>
             <div>
-              <Link href="/SignIn">
+              <Link href="/signIn">
                 <MenuItem onClick={toggleOpen}>Sign in</MenuItem>
               </Link>
-              <Link href="/Register">
+              <Link href="/register">
                 <MenuItem onClick={toggleOpen}>Register</MenuItem>
               </Link>
             </div>
           </div>
         )}
-      </div>
+          </div>
+          {isOpen ? <BackDrop onClick={toggleOpen} /> : null}
     </>
   )
 }
