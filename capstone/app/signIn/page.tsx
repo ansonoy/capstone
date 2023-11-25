@@ -4,9 +4,9 @@ import SignInForm from "./signInForm"
 const SignIn = async () => {
   const currentUser = await getCurrentUser()
   return (
-      <>
-          <SignInForm currentUser= {currentUser} />
-      </>
+    <>
+      <SignInForm currentUser={currentUser} />
+    </>
   )
 }
 export default SignIn
