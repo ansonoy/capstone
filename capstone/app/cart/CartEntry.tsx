@@ -14,7 +14,16 @@ export default function CartEntry({
   cartItem: { Product, quantity },
   setProductQuantity
 }: CartEntryProps) {
-  const [isPending,startTransition] = useTransition()
+  const quantityOptions: JSX.Element[] = []
+  for (let i = 1; i <= 10; i++) {
+    quantityOptions.push(
+      <option value={i} key={i}>
+        {i}
+      </option>
+    )
+  }
+  const [isPending, startTransition] = useTransition()
+  const total = Product.price * quantity
 
   return (
     <div>
@@ -35,9 +44,8 @@ export default function CartEntry({
           <div>Price: ${Product.price.toFixed(2)}</div>
           <div className="my-1 flex items-center gap-2">
             Quantity:
-            <input
-              type="number"
-              className="text-black rounded-md h-[2.5rem] w-[4rem] pl-4 bg-gray-200"
+            <select
+              className="text-black rounded-md h-[2rem] w-[4rem] pl-4 bg-gray-200"
               defaultValue={quantity}
               onChange={(e) => {
                 const newQuantity = parseInt(e.currentTarget.value)
@@ -45,15 +53,16 @@ export default function CartEntry({
                   await setProductQuantity(Product.id, newQuantity)
                 })
               }}
-              max={10}
-              min={0}
-            />
+            >
+              <option value={0}>0</option>
+              {quantityOptions}
+            </select>
           </div>
 
           <div className="flex items-center gap-3">
-            Total: ${Product.price * quantity}
+            Total: ${total.toFixed(2)}
             {isPending && (
-            <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white"></div>
+              <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white"></div>
             )}
           </div>
         </div>
