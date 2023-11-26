@@ -6,6 +6,7 @@ import MenuItem from "./menuItem"
 import { signOut } from "next-auth/react"
 import BackDrop from "./backDrop"
 import { SafeUser } from "@/types"
+import toast from "react-hot-toast"
 
 interface UserMenuProps {
   currentUser: SafeUser | null
@@ -22,9 +23,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
       <div className="relative z-30">
         <div onClick={toggleOpen} className="cursor-pointer transition">
           {currentUser ? (
-            <AiOutlineUser size="24" className="text-orange-500 hover:scale-110 transition" />
+            <AiOutlineUser
+              size="24"
+              className="text-orange-500 hover:scale-110 transition"
+            />
           ) : (
-            <AiOutlineUser size="24" />
+            <AiOutlineUser size="24" className="hover:scale-110 transition" />
           )}
         </div>
         {isOpen && (
@@ -34,15 +38,21 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 <Link href="/orders">
                   <MenuItem onClick={toggleOpen}>Your Orders</MenuItem>
                 </Link>
-                <Link href="/admin">
-                  <MenuItem onClick={toggleOpen}>Admin Dashboard</MenuItem>
-                </Link>
+                {currentUser?.role === "ADMIN" ? (
+                  <Link href="/admin">
+                    <MenuItem onClick={toggleOpen}>Admin Dashboard</MenuItem>
+                  </Link>
+                ) : null}
                 <hr />
                 <MenuItem
                   onClick={() => {
                     toggleOpen()
-                    signOut()
-                    console.log("signed out")
+                    setTimeout(() => {
+                      toast.success("You have been signed out!")
+                    }, 1000)
+                    setTimeout(() => {
+                      signOut({ callbackUrl: "/" })
+                    }, 3000)
                   }}
                 >
                   Sign out

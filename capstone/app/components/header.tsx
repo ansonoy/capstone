@@ -15,9 +15,10 @@ interface HeaderProps {
 }
 
 export default function Header({ currentUser }: HeaderProps) {
-  const hiddenHeader = ["/admin", null]
 
+  const hiddenHeader = ["/adminNO!", null]
   const isHeaderHidden = hiddenHeader.includes(usePathname())
+  //just testing how it looks with the navbar on admin.
 
   return (
     <>
