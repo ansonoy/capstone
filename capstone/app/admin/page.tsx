@@ -3,11 +3,12 @@ import { SafeUser } from "@/types"
 import Image from "next/image"
 import WDD from "@/public/WDDbig.svg"
 import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { ReactNode, useEffect } from "react"
 import AdminNav from "../components/admin/adminNav"
 
 interface AdminProps {
   currentUser: SafeUser | null
+  children: ReactNode
 }
 
 const Admin: React.FC<AdminProps> = ({ currentUser }) => {
@@ -44,7 +45,7 @@ const Admin: React.FC<AdminProps> = ({ currentUser }) => {
   return (
     <>
       <AdminNav />
-      <div className="">truth cock</div>
+      <div className=""></div>
     </>
   )
 }

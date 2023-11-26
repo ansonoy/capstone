@@ -6,12 +6,12 @@ export const metadata = {
     description: "WDD Admin Dashboard"
 }
 
-const AdminLayout = async ({children} : { children: React.ReactNode}) => {
+const AdminLayout = async ({ children }: {children : React.ReactNode}) => {
     const currentUser = await getCurrentUser()
   return (
     <>
       <div className="h-screen flex justify-center items-center">
-              <Admin currentUser={currentUser} />
+              <Admin currentUser={currentUser} children={children} />
       </div>
     </>
   )
