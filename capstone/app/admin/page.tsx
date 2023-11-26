@@ -5,6 +5,7 @@ import WDD from "@/public/WDDbig.svg"
 import { useRouter } from "next/navigation"
 import { ReactNode, useEffect } from "react"
 import AdminNav from "../components/admin/adminNav"
+import Stats from "../components/admin/stats"
 
 interface AdminProps {
   currentUser: SafeUser | null
@@ -43,10 +44,12 @@ const Admin: React.FC<AdminProps> = ({ currentUser }) => {
   }
 
   return (
-    <>
+    <div>
       <AdminNav />
-      <div className=""></div>
-    </>
+      <div className="">
+        {/* <Stats products={products} orders={orders} users={users} /> */}
+      </div>
+    </div>
   )
 }
 export default Admin
