@@ -1,8 +1,9 @@
+"use server"
+
 import { Cart, CartItem, Prisma } from "@prisma/client"
 import prisma from "../prisma"
 import { cookies } from "next/dist/client/components/headers"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/pages/api/auth/[...nextauth]"
+import { getCurrentUser } from "@/action/getCurrentUser"
 
 export type CartWithProducts = Prisma.CartGetPayload<{
   include: { items: { include: { Product: true } } }
@@ -18,13 +19,12 @@ export type ShoppingCart = CartWithProducts & {
 }
 
 export async function getCart(): Promise<ShoppingCart | null> {
-  const session = await getServerSession(authOptions)
-
+  const user = await getCurrentUser()
   let cart: CartWithProducts | null = null
 
-  if (session) {
+  if (user) {
     cart = await prisma.cart.findFirst({
-      where: { userId: session.user.id },
+      where: { userId: user.id },
       include: { items: { include: { Product: true } } }
     })
   } else {
@@ -52,12 +52,12 @@ export async function getCart(): Promise<ShoppingCart | null> {
 }
 
 export async function createCart(): Promise<ShoppingCart> {
-  const session = await getServerSession(authOptions)
+  const user = await getCurrentUser()
   let newCart: Cart
 
-  if (session) {
+  if (user) {
     newCart = await prisma.cart.create({
-      data: { userId: session.user.id }
+      data: { userId: user.id }
     })
   } else {
     newCart = await prisma.cart.create({
@@ -78,7 +78,7 @@ export async function createCart(): Promise<ShoppingCart> {
 
 export async function mergeCarts(userId: string) {
   const localCartId = cookies().get("localCartId")?.value
-  
+
   const localCart = localCartId
     ? await prisma.cart.findUnique({
         where: { id: localCartId },

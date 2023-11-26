@@ -55,9 +55,9 @@ export const authOptions: AuthOptions = {
   //   }
   // },
   // events: {
-  //   async signIn({ user }) {
-  //     await mergeCarts(user.id)
-  //   }
+  //     async signIn({ user }) {
+  //         await mergeCarts(user.id)
+  //     }
   // },
   debug: process.env.NODE_ENV === "development",
   session: {
