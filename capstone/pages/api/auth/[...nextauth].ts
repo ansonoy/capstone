@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "@/lib/prisma"
 import bcrypt from "bcrypt"
+import { mergeCarts } from "@/lib/db/cart"
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -47,6 +48,17 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/signIn"
   },
+  // callbacks: {
+  //   session({ session, user }) {
+  //     session.user.id = user.id
+  //     return session
+  //   }
+  // },
+  // events: {
+  //   async signIn({ user }) {
+  //     await mergeCarts(user.id)
+  //   }
+  // },
   debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt"
