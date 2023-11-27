@@ -7,7 +7,7 @@ import { sendEmail } from "@/action/sendEmail"
 
 export default function Contact() {
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-center translate-y-10">
       <motion.section
         id="contact"
         className="mb-20 sm:mb-28 w-[min(100%, 38rem)] text-center"
