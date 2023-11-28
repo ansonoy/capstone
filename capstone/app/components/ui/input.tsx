@@ -1,44 +1,25 @@
-"use client"
-import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form"
+import * as React from "react"
 
-export interface InputProps {
-  id: string
-  label: string
-  type?: string
-  disabled?: boolean
-  required?: boolean
-  register: UseFormRegister<FieldValues>
-  errors: FieldErrors
-  className?: string
-  placeholder?: string
-}
+import { cn } from "@/lib/utils"
 
-const Input: React.FC<InputProps> = ({
-  id,
-  label,
-  type,
-  disabled,
-  required,
-  register,
-  errors,
-  placeholder,
-  className
-}) => {
-  return (
-    <input
-      autoComplete="off"
-      id={id}
-      disabled={disabled}
-      placeholder={errors[id] ? "" : placeholder}
-      {...register(id, { required })}
-      type={type}
-      className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
-        errors[id] ? "ring-red-700" : "ring-stone-300"
-      } ${
-        errors[id] ? "focus:ring-red-700" : "focus:ring-stone-300"
-      } ${className}`}
-    />
-  )
-}
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-export default Input
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Input.displayName = "Input"
+
+export { Input }

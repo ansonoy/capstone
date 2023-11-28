@@ -2,7 +2,7 @@
 import Image from "next/image"
 import WDD from "@/public/WDDbig.svg"
 import Link from "next/link"
-import Input from "../components/ui/input"
+import AuthInput from "../components/ui/authInput"
 import { cn } from "@/lib/utils"
 import { useEffect, useState } from "react"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
@@ -51,7 +51,6 @@ const SignInForm: React.FC<SignInFormProps> = ({ currentUser }) => {
       if (callback?.ok) {
         router.push("/")
         router.refresh()
-        console.log("logged in.")
         toast.success("Logged in!")
       }
       if (callback?.error) {
@@ -100,7 +99,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ currentUser }) => {
             <form>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2 relative">
-                  <Input
+                  <AuthInput
                     disabled={isLoading}
                     placeholder="Email"
                     label="Email"
@@ -121,7 +120,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ currentUser }) => {
                   )}
                 </div>
                 <div className="grid gap-1 py-2 relative">
-                  <Input
+                  <AuthInput
                     disabled={isLoading}
                     placeholder="Password"
                     label="Password"

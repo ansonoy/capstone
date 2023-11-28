@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 
 export default function Footer() {
 
-  const hiddenFooter = ["/admin", null]
+  const hiddenFooter = ["/admin", "/admin/manage-products", "/admin/add-products", "/admin/manage-orders", null]
 
   const isFooterHidden = hiddenFooter.includes(usePathname())
   return (

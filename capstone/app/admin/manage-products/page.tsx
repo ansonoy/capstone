@@ -1,6 +1,13 @@
-const ManageProducts = () => {
+import getProductDash from "@/action/getProductDash"
+import ManageProductsClient from "./manageProductsClient"
+
+const ManageProducts = async () => {
+  const products = await getProductDash({ category: null })
+
   return (
-    <div>ManageProducts</div>
+    <>
+      <ManageProductsClient products={products} />
+    </>
   )
 }
 export default ManageProducts

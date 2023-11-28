@@ -2,13 +2,13 @@
 import Image from "next/image"
 import WDD from "@/public/WDDbig.svg"
 import Link from "next/link"
-import Input from "../components/ui/input"
+import AuthInput from "../components/ui/authInput"
 import { cn } from "@/lib/utils"
 import { useEffect, useState } from "react"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import { Button } from "../components/ui/button"
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form"
-import Checkbox from "../components/ui/checkbox"
+import AuthCheckbox from "../components/ui/authCheckbox"
 import axios from "axios"
 import { toast } from "react-hot-toast"
 import { signIn } from "next-auth/react"
@@ -49,7 +49,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
     axios
       .post("/api/register", data)
       .then(() => {
-        console.log("account created.")
         toast.success("Account created!")
 
         signIn("credentials", {
@@ -60,7 +59,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
           if (callback?.ok) {
             router.push("/")
             router.refresh()
-            console.log("logged in.")
             toast.success("Logged in!")
           }
           if (callback?.error) {
@@ -114,7 +112,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
             <form>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2 relative">
-                  <Input
+                  <AuthInput
                     disabled={isLoading}
                     placeholder="Name"
                     label="name"
@@ -135,7 +133,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
                   )}
                 </div>
                 <div className="grid gap-1 py-2 relative">
-                  <Input
+                  <AuthInput
                     disabled={isLoading}
                     placeholder="Email"
                     label="Email"
@@ -156,7 +154,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
                   )}
                 </div>
                 <div className="grid gap-1 py-2 relative">
-                  <Input
+                  <AuthInput
                     disabled={isLoading}
                     placeholder="Password"
                     label="Password"
@@ -189,7 +187,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
                   </button>
                 </div>
                 <div className="flex flex-row">
-                  <Checkbox
+                  <AuthCheckbox
                     disabled={isLoading}
                     id="terms"
                     className="mr-2 mt-1"
