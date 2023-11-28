@@ -5,23 +5,26 @@ import React, { useEffect } from "react"
 import { ShoppingCart } from "@/lib/db/cart"
 import { useSearchParams } from "next/navigation"
 import toast from "react-hot-toast"
-import { deleteProduct } from "./actions"
+
+
+
 
 type CheckoutButtonProps = {
   cart: ShoppingCart | null
-  deleteProduct: (cartId: string) => Promise<void>
+  deleteCart: (cartId: string) => Promise<void>
+
 }
 
-export default function CheckoutButton({ cart }: CheckoutButtonProps) {
+export default function CheckoutButton({ cart, deleteCart }: CheckoutButtonProps) {
   const searchParams = useSearchParams()
   if (!cart || null) {
     return
   }
-
+  
   useEffect(() => {
     if (searchParams?.get("success")) {
       toast.success("payment completed")
-      deleteProduct(cart.id)
+      deleteCart(cart.id)
     }
 
     if (searchParams?.get("canceled")) {
