@@ -3,12 +3,13 @@
 import axios from "axios"
 import React, { useEffect } from "react"
 import { ShoppingCart } from "@/lib/db/cart"
-import { error } from "console"
 import { useSearchParams } from "next/navigation"
 import toast from "react-hot-toast"
+import { deleteProduct } from "./actions"
 
 type CheckoutButtonProps = {
   cart: ShoppingCart | null
+  deleteProduct: (cartId: string) => Promise<void>
 }
 
 export default function CheckoutButton({ cart }: CheckoutButtonProps) {
@@ -20,6 +21,7 @@ export default function CheckoutButton({ cart }: CheckoutButtonProps) {
   useEffect(() => {
     if (searchParams?.get("success")) {
       toast.success("payment completed")
+      deleteProduct(cart.id)
     }
 
     if (searchParams?.get("canceled")) {

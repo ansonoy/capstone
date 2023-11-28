@@ -3,6 +3,8 @@ import { headers } from "next/headers"
 import { NextResponse } from "next/server"
 import { stripe } from "@/lib/stripe"
 import prisma from "@/lib/prisma"
+import { getCart } from "@/lib/db/cart"
+import { metadata } from "@/app/layout"
 
 export async function POST(req: Request) {
   const body = await req.text()
@@ -47,9 +49,10 @@ export async function POST(req: Request) {
         items: true
       }
     })
+   
     const productIds = order.items.map((item) => item.ProductId)
 
-    await prisma.product.updateMany({
+     await prisma.product.updateMany({
       where: {
         id: {
           in: [...productIds]
@@ -62,5 +65,5 @@ export async function POST(req: Request) {
       }))
     })
   }
-  return new NextResponse(null, {status : 200})
+  return new NextResponse(null, { status: 200 })
 }

@@ -2,11 +2,12 @@ import React from "react"
 
 import { getCart } from "@/lib/db/cart"
 import CartEntry from "./CartEntry"
-import { setProductQuantity } from "./actions"
+import { deleteProduct, setProductQuantity } from "./actions"
 import CheckoutButton from "./checkoutButton"
 
 export default async function Cart() {
   const cart = await getCart()
+  
 
   return (
     <div className="min-h-screen mt-24 mx-16">
@@ -24,7 +25,7 @@ export default async function Cart() {
         <p className="mb-3 font-bold">
           Subtotal: ${cart?.subtotal.toFixed(2) || (0.0).toFixed(2)}
         </p>
-        <CheckoutButton cart={cart}/>
+        <CheckoutButton cart={cart} deleteProduct={deleteProduct}/>
         
       </div>
     </div>
