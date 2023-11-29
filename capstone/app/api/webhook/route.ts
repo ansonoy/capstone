@@ -3,8 +3,6 @@ import { headers } from "next/headers"
 import { NextResponse } from "next/server"
 import { stripe } from "@/lib/stripe"
 import prisma from "@/lib/prisma"
-import { getCart } from "@/lib/db/cart"
-import { metadata } from "@/app/layout"
 
 export async function POST(req: Request) {
   const body = await req.text()

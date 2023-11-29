@@ -1,6 +1,5 @@
 import { getOrder } from "@/lib/db/order"
 import React from "react"
-import OrderEntry from "./OrderEntry"
 import Link from "next/link"
 import Image from "next/image"
 
