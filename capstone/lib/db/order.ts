@@ -1,5 +1,6 @@
 import { getCurrentUser } from "@/action/getCurrentUser"
 import { Prisma } from "@prisma/client"
+import prisma from "../prisma"
 
 export type OrderWithProduct = Prisma.OrderGetPayload<{
   include: { items: { include: { Product: true } } }
