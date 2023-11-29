@@ -1,8 +1,7 @@
 "use client"
-
-import { DataTableDemo } from "@/app/components/ui/dataTable"
 import { formatPrice } from "@/util/formatPrice"
 import { Product } from "@prisma/client"
+import { DataGrid } from '@mui/x-data-grid'
 
 interface ManageProductsClientProps {
   products: Product[]
@@ -23,10 +22,22 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
       }
     })
   }
+
   return (
-    <div>
-      <DataTableDemo />
-    </div>
+      <>
+          <DataGrid
+  rows={rows}
+  columns={columns}
+  initialState={{
+    pagination: {
+      paginationModel: { page: 0, pageSize: 5 },
+    },
+  }}
+  pageSizeOptions={[5, 10]}
+  checkboxSelection
+/>
+          
+    </>
   )
 }
 export default ManageProductsClient

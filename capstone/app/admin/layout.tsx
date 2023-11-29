@@ -1,19 +1,17 @@
-import { getCurrentUser } from "@/action/getCurrentUser"
-import Admin from "./page"
+import AdminNav from "../components/admin/adminNav"
 
 export const metadata = {
-    title: "WDD Admin Dashboard",
-    description: "WDD Admin Dashboard"
+  title: "WDD Admin Dashboard",
+  description: "WDD Admin Dashboard"
 }
 
-const AdminLayout = async ({ children }: {children : React.ReactNode}) => {
-    const currentUser = await getCurrentUser()
+const AdminLayout = async ({ children }: { children: React.ReactNode }) => {
+
   return (
-    <>
-      <div className="h-screen flex justify-center items-center">
-              <Admin currentUser={currentUser} children={children} />
-      </div>
-    </>
+    <div className="h-screen flex justify-center items-center">
+      <AdminNav />
+      {children}
+    </div>
   )
 }
 export default AdminLayout
