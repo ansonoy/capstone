@@ -2,10 +2,12 @@ import React from "react"
 
 import { getCart } from "@/lib/db/cart"
 import CartEntry from "./CartEntry"
-import { setProductQuantity } from "./actions"
+import { deleteCart, setProductQuantity } from "./actions"
+import CheckoutButton from "./checkoutButton"
 
 export default async function Cart() {
   const cart = await getCart()
+  
 
   return (
     <div className="min-h-screen mt-24 mx-16">
@@ -23,9 +25,8 @@ export default async function Cart() {
         <p className="mb-3 font-bold">
           Subtotal: ${cart?.subtotal.toFixed(2) || (0.0).toFixed(2)}
         </p>
-        <button className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] text-white rounded-2xl ouline-none transition-all focus:scale-110 hover:scale-110 active:scale-105 bg-orange-500 disabled:scale-100 disabled:bg-opacity-65 sm:w-[200px]">
-          Checkout
-        </button>
+        <CheckoutButton cart={cart} deleteCart={deleteCart}/>
+        
       </div>
     </div>
   )
