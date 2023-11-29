@@ -5,6 +5,7 @@ import React, { useEffect } from "react"
 import { ShoppingCart } from "@/lib/db/cart"
 import { useSearchParams } from "next/navigation"
 import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
 
 
 
@@ -16,6 +17,7 @@ type CheckoutButtonProps = {
 }
 
 export default function CheckoutButton({ cart, deleteCart }: CheckoutButtonProps) {
+  const router = useRouter()
   const searchParams = useSearchParams()
   if (!cart || null) {
     return
@@ -25,6 +27,7 @@ export default function CheckoutButton({ cart, deleteCart }: CheckoutButtonProps
     if (searchParams?.get("success")) {
       toast.success("payment completed")
       deleteCart(cart.id)
+      router.push("/cart/success")
     }
 
     if (searchParams?.get("canceled")) {
@@ -33,7 +36,7 @@ export default function CheckoutButton({ cart, deleteCart }: CheckoutButtonProps
   }, [searchParams])
 
   const onCheckout = async () => {
-    const result = await axios.post(`http://localhost:3000/checkout`)
+    const result = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`)
     window.location.assign(result.data.url)
   }
 

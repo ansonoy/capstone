@@ -77,8 +77,8 @@ export async function POST() {
     phone_number_collection: {
       enabled: false
     },
-    success_url: "http://localhost:3000/cart?success=true",
-    cancel_url: "http://localhost:3000/cart?cancel=true",
+    success_url: `${process.env.NEXT_PUBLIC_API_URL}/cart?success=true`,
+    cancel_url: `${process.env.NEXT_PUBLIC_API_URL}/cart?cancel=true`,
     metadata: {
       orderId: newOrder.id
     }
