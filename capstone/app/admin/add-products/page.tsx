@@ -9,7 +9,7 @@ const AddProducts = async () => {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-8 w-full flex items-center justify-center">
       <AddProductForm />
     </div>
   )
