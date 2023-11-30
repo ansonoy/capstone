@@ -12,44 +12,49 @@ export default async function Orders() {
       <hr className="pb-2" />
 
       {order?.map((order) => (
-        <div>
-          <div className="flex flex-col items-end">
-            <div>Order# {order.id} </div>
-            <div>
-              Total: $
-              {order.items
-                .reduce(
-                  (acc, item) => acc + item.quantity * item.Product.price,
-                  0.0
-                )
-                .toFixed(2)}
-            </div>
-          </div>
-          <div className="pb-4">
-            {order.items.map((item) => (
-              <div className="flex flex-wrap items-center gap-3 mx-2 pb-2">
-                <div className="pt-4 p-2 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group sm:mr-5">
-                  <Link href={"/shop/" + item.Product.id}>
-                    <Image
-                      src={item.Product.imageurl}
-                      alt={item.Product.name}
-                      width={200}
-                      height={200}
-                      className="rounded-lg"
-                    />
-                  </Link>
-                </div>
-                <div>
-                  <Link href={"/shop/" + item.Product.id}>
-                    {item.Product.name}
-                  </Link>
-                  <div>Price: ${item.Product.price.toFixed(2)}</div>
-                  <div className="my-1 flex items-center gap-2">
-                    Quantity: {item.quantity}
+        <div className="">
+          <div className="flex flex-col md:flex-row w-full justify-between">
+            <div className="pb-4">
+              {order.items.map((item) => (
+                <div className="flex flex-wrap flex-col sm:flex-row items-center gap-3 mx-2 pb-2">
+                  <div className="pt-4 p-2 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group sm:mr-5">
+                    <Link href={"/shop/" + item.Product.id}>
+                      <Image
+                        src={item.Product.imageurl}
+                        alt={item.Product.name}
+                        width={200}
+                        height={200}
+                        className="rounded-lg"
+                      />
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href={"/shop/" + item.Product.id}>
+                      {item.Product.name}
+                    </Link>
+                    <div>Price: ${item.Product.price.toFixed(2)}</div>
+                    <div className="my-1 flex items-center gap-2">
+                      Quantity: {item.quantity}
+                    </div>
                   </div>
                 </div>
+              ))}
+            </div>
+            <div className="flex flex-col items-end">
+              <div>Order# {order.id} </div>
+              <div>
+                Order Date: {order.updatedAt.toISOString().slice(0, 10)}
               </div>
-            ))}
+              <div>
+                Total: $
+                {order.items
+                  .reduce(
+                    (acc, item) => acc + item.quantity * item.Product.price,
+                    0.0
+                  )
+                  .toFixed(2)}
+              </div>
+            </div>
           </div>
           <hr className="pb-2" />
         </div>
