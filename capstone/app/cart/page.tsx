@@ -10,7 +10,7 @@ export default async function Cart() {
   
 
   return (
-    <div className="min-h-screen mt-24 mx-16">
+    <div className="min-h-screen mt-24 mx-4 sm:mx-16">
       <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
       <hr className="pb-2"/>
       {cart?.items.map((cartItem) => (

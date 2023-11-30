@@ -7,7 +7,7 @@ export default async function Orders() {
   const order = await getOrder()
 
   return (
-    <div className="min-h-screen mt-24 mx-16">
+    <div className="min-h-screen mt-24 mx-4 sm:mx-16">
       <h1 className="text-3xl font-bold mb-6">Your Orders</h1>
       <hr className="pb-2" />
 
