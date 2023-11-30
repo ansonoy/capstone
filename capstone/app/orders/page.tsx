@@ -41,12 +41,12 @@ export default async function Orders() {
               ))}
             </div>
             <div className="flex flex-col items-end">
-              <div>Order# {order.id} </div>
+              <div>ORDER # {order.id} </div>
               <div>
-                Order Date: {order.updatedAt.toISOString().slice(0, 10)}
+                ORDER DATE {order.updatedAt.toISOString().slice(0, 10)}
               </div>
               <div>
-                Total: $
+                TOTAL $
                 {order.items
                   .reduce(
                     (acc, item) => acc + item.quantity * item.Product.price,
