@@ -27,7 +27,7 @@ export default function Recipe({
         <div className="">
           <div>{image}</div>
           <hr />
-          <div className=" bold">Name: {name}</div>
+          <div className="font-semibold">Name: {name}</div>
           <div className="">{description}</div>
         </div>
       </div>

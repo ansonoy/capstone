@@ -17,7 +17,6 @@ export default async function ProductPage({
   const product = await prisma.product.findUnique({ where: { id } })
   if (!product) notFound()
 
-
   return (
     <div className="flex justify-center items-center flex-col lg:flex-row h-auto sm:h-screen pb-56 lg:pb-0 lg:pt-0 pt-32">
       <section className="w-full flex lg:justify-end m-4">
@@ -44,11 +43,16 @@ export default async function ProductPage({
         </div>
         <p className="text-md w-2/3 pt-12">{product.description}</p>
         <hr className="my-4 w-2/3" />
-        
-        <AddtoCartButton
-          productId={product.id}
-          incrementProductQuantity={incrementProductQuantity}
-        />
+        {product.inventory ? (
+          <AddtoCartButton
+            productId={product.id}
+            incrementProductQuantity={incrementProductQuantity}
+          />
+        ) : (
+          <button className="flex items-center justify-center gap-2 h-[3rem] w-[8rem] text-white rounded-2xl ouline-none transition-all bg-gray-500">
+            Out of stock
+          </button>
+        )}
       </section>
     </div>
   )

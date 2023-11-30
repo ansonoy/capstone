@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useState, useTransition } from "react"
+import React, { useEffect, useState, useTransition } from "react"
+import toast from "react-hot-toast"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 
 type AddtoCartButtonProps = {
@@ -16,28 +17,32 @@ export default function AddtoCartButton({
   incrementProductQuantity
 }: AddtoCartButtonProps) {
   const [isPending, startTransition] = useTransition()
+  const [success, setSuccess] = useState(false)
   const [quantity, setQuantity] = useState<number>(1)
 
-  const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newQuantity = parseInt(event.target.value, 10)
-
-    if (!isNaN(newQuantity) && newQuantity >= 1 && newQuantity <= 10) {
-      setQuantity(newQuantity)
-    }
+  const quantityOptions: JSX.Element[] = []
+  for (let i = 1; i <= 10; i++) {
+    quantityOptions.push(
+      <option value={i} key={i}>
+        {i}
+      </option>
+    )
   }
 
   return (
     <section>
       <h2 className="pb-2">Quantity:</h2>
-      <input
-        type="number"
-        className="text-black rounded-xl h-[2.5rem] w-[5rem] pl-4 bg-gray-200"
-        defaultValue="1"
-        value={quantity}
-        onChange={handleQuantityChange}
-        max={10}
-        min={1}
-      />
+      <select
+        className="text-black rounded-md h-[2rem] w-[4rem] pl-4 bg-gray-200"
+        defaultValue={1}
+        onChange={(e) => {
+          const newQuantity = parseInt(e.currentTarget.value)
+          setQuantity(newQuantity)
+        }}
+      >
+        <option value={0}>0</option>
+        {quantityOptions}
+      </select>
       <hr className="my-4 w-2/3" />
       <div className="flex items-center gap-2">
         <button
@@ -45,6 +50,10 @@ export default function AddtoCartButton({
           onClick={() => {
             startTransition(async () => {
               await incrementProductQuantity(productId, quantity)
+              setSuccess(true)
+              if ({ success }) {
+                toast.success("Added to Cart")
+              }
             })
           }}
         >

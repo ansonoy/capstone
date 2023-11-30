@@ -17,10 +17,10 @@ export default async function Shop() {
             className="w-full object-contain"
           />
         }
-        header="Want to buy products?"
-        text="Take a look at our different Gin and Vodka products. Each season we have different types of liquor available."
+        header="Shop"
+        text="Explore our exclusive shop page, where you can elevate your collection with the crisp allure of our signature vodka and the botanical symphony of our artisanal gin; each bottle is a celebration of quality and flavor, embodying the essence of extraordinary craftsmanship."
       />
-      <div>
+      <div className="w-full flex justify-center py-8 px-2 sm:px-4 lg:px-8">
         <Products product={products} />
       </div>
     </main>
