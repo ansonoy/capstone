@@ -33,7 +33,7 @@ const AddProductForm = () => {
         <div className="relative">
           <AuthInput
             disabled={isLoading}
-            placeholder="Name"
+            placeholder="Product name"
             label="name"
             required
             register={register}
@@ -68,7 +68,7 @@ const AddProductForm = () => {
           />
           {errors.type && (
             <div className="absolute left-3 top-4 pointer-events-none text-red-500">
-              Type is required
+              Alcohol type is required
             </div>
           )}
         </div>
@@ -181,21 +181,21 @@ const AddProductForm = () => {
           <AdminTextArea
             disabled={isLoading}
             placeholder="Describe the product..."
-            label="name"
+            label="description"
             required
             register={register}
             errors={errors}
-            id="name"
+            id="description"
             className={cn({
               "focus-visible:ring-orange-500": true,
               "text-black": true,
-                "ring-red-700 ring-2": errors.name,
+                "ring-red-700 ring-2": errors.description,
               "h-32": true
             })}
           />
-          {errors.name && (
+          {errors.description && (
             <div className="absolute left-3 top-4 pointer-events-none text-red-500">
-              Name is required
+              Description is required
             </div>
           )}
         </div>
