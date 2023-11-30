@@ -7,9 +7,6 @@ import { useSearchParams } from "next/navigation"
 import toast from "react-hot-toast"
 import { useRouter } from "next/navigation"
 
-
-
-
 type CheckoutButtonProps = {
   cart: ShoppingCart | null
   deleteCart: (cartId: string) => Promise<void>
