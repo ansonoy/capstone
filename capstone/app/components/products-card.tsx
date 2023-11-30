@@ -22,7 +22,7 @@ export default function Products({ product }: ProductsProps) {
       <ul className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-3 text-lg text-gray-800">
         {product.map((product) => (
           <div
-            className="pt-4 p-2 pb-5 flex flex-col max-w-[30rems] bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group cursor-pointer"
+            className="pt-4 p-2 pb-5 flex flex-col max-w-[40rems] bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group cursor-pointer"
             onClick={() => {
               router.push(`/shop/${product.id}`)
             }}
@@ -30,8 +30,8 @@ export default function Products({ product }: ProductsProps) {
             <div className="flex justify-center">
               <Image
               src={product.imageurl}
-              width={300}
-              height={300}
+              width={400}
+              height={400}
               alt={product.name}
             />
             </div>
