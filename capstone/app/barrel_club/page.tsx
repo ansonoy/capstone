@@ -4,6 +4,7 @@ import Image from "next/image"
 import barrel from "@/public/Barrels.png"
 import Heading from "../components/heading"
 import BarrelCard from "../components/barrel-card-test"
+import { motion } from "framer-motion"
 
 export default function Barrel_Club() {
   return (
@@ -14,8 +15,7 @@ export default function Barrel_Club() {
             src={barrel}
             alt="Barrel Picture"
             quality={95}
-            className="w-full z-0 transition-opacity opacity-0 duration-[1s]"
-            onLoadingComplete={(image) => image.classList.remove("opacity-0")}
+            className="w-full z-0"
           />
         }
         header="What is the Barrel Club?"
@@ -25,7 +25,10 @@ export default function Barrel_Club() {
             initial 10 investors, of which we have already sold 6 (thank you!!).
             Please contact us at 403-830-5663 for more information. Thank you!"
       />
-      <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-6 py-4">
+      <motion.div className="flex flex-col sm:flex-row items-center sm:justify-center gap-6 py-4"
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{delay: 0.2, duration: 0.6}}>
         <BarrelCard
             title="Barrel Club 1400"
             label="CLUB"
@@ -54,7 +57,7 @@ export default function Barrel_Club() {
             width="w-[15rem] min-[500px]:w-[20rem]"
             height="min-h-[28rem]"
           />
-      </div>
+      </motion.div>
     </main>
   )
 }

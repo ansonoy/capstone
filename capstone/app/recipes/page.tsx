@@ -5,6 +5,7 @@ import ginImage from "@/public/signature_gin.png"
 import Image from "next/image"
 import Heading from "../components/heading"
 import recipes from "@/public/recipes.png"
+import { motion } from "framer-motion"
 
 export default function Recipes() {
   return (
@@ -15,14 +16,18 @@ export default function Recipes() {
             src={recipes}
             alt="Barrel Picture"
             quality={95}
-            className="w-full object-contain transition-opacity opacity-0 duration-[1s]"
-            onLoadingComplete={(image) => image.classList.remove("opacity-0")}
+            className="w-full object-contain"
           />
         }
         header="Need help creating cocktails?"
         text="Indulge in the art of mixology with our curated cocktail recipes, offering a spectrum of flavors crafted from our finest spirits and showcasing the passion and expertise behind our distillery."
       />
-      <div className="pb-12">
+      <motion.div
+        className="pb-12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+      >
         <div className={`h-[25rem] flex items-center justify-center pt-24`}>
           <Recipe
             image={
@@ -63,7 +68,7 @@ export default function Recipes() {
             enjoyAlso="Gin with no Tonic "
           />
         </div>
-      </div>
+      </motion.div>
     </main>
   )
 }
