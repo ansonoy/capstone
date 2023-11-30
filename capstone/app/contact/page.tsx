@@ -10,7 +10,7 @@ export default function Contact() {
     <div className="h-screen flex justify-center items-center">
       <motion.section
         id="contact"
-        className="mb-20 sm:mb-28 w-[min(100%, 38rem)] text-center"
+        className="mb-20 sm:mb-28 max-w-[35rem] text-center px-2"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -20,7 +20,7 @@ export default function Contact() {
           Contact us
         </h2>
         <p className="-mt-6 text-white/80">
-          Please contact me directly at{" "}
+          {"Have questions or want to book a tour of the distillery? Additionally, are you interested in joining the barrel club? Contact us at "}
           <a className="underline" href="mailto:anson@silverone.dev">
             whisperingdutchman@cool.com
           </a>{" "}
