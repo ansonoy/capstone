@@ -25,7 +25,7 @@ export default function Barrel_Club() {
             initial 10 investors, of which we have already sold 6 (thank you!!).
             Please contact us at 403-830-5663 for more information. Thank you!"
       />
-      <div className="flex flex-row justify-center gap-6 py-4">
+      <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-6 py-4">
         <BarrelCard
             title="Barrel Club 1400"
             label="CLUB"
@@ -38,7 +38,7 @@ export default function Barrel_Club() {
               'Valued at $24.95/bottle',
             ]}
             width="w-[15rem] min-[500px]:w-[20rem]"
-            height="h-[28rem]"
+            height="min-h-[28rem]"
           />
           <BarrelCard
             title="Barrel Club 700"
@@ -52,7 +52,7 @@ export default function Barrel_Club() {
               'Valued at $24.95/bottle',
             ]}
             width="w-[15rem] min-[500px]:w-[20rem]"
-            height="h-[28rem]"
+            height="min-h-[28rem]"
           />
       </div>
     </main>
