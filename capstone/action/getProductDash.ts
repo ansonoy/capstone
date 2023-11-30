@@ -1,3 +1,5 @@
+import prisma from "@/lib/prisma"
+
 export default async function getProductDash() {
   try {
     const orders = await prisma.product.findMany({
