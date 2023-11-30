@@ -19,20 +19,23 @@ export default function Products({ product }: ProductsProps) {
     animate={{opacity: 1}}
     transition={{delay: 0.2, duration: 0.6}}
     >
-      <ul className="flex flex-wrap gap-3 text-lg text-gray-800">
+      <ul className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-3 text-lg text-gray-800">
         {product.map((product) => (
           <div
-            className="pt-4 p-2 pb-5 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group cursor-pointer"
+            className="pt-4 p-2 pb-5 flex flex-col max-w-[30rems] bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group cursor-pointer"
             onClick={() => {
               router.push(`/shop/${product.id}`)
             }}
           >
-            <Image
+            <div className="flex justify-center">
+              <Image
               src={product.imageurl}
               width={300}
               height={300}
               alt={product.name}
             />
+            </div>
+            
             <div className=" ">{product.name}</div>
             <div className=" ">{product.type}</div>
             <div>
