@@ -111,6 +111,10 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
       })
   }, [])
 
+  const deleteProduct = useCallback((id: string, inventory: boolean) => {
+    
+  }, [])
+
   return (
     <div className="">
       <DataGrid
