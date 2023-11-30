@@ -3,10 +3,11 @@ import React from "react"
 import Image from "next/image"
 import barrel from "@/public/Barrels.png"
 import Heading from "../components/heading"
+import BarrelCard from "../components/barrel-card-test"
 
 export default function Barrel_Club() {
   return (
-    <main className="">
+    <main className="min-h-screen">
       <Heading
         image={
           <Image
@@ -24,15 +25,35 @@ export default function Barrel_Club() {
             initial 10 investors, of which we have already sold 6 (thank you!!).
             Please contact us at 403-830-5663 for more information. Thank you!"
       />
-      <div className="h-[30rem] flex flex-col">
-        <div>Barrel Club 1400</div>
-        <div>CA$1,400.00</div>
-        <div>What you get!</div>
-        <div>24 (750ml) custom labeled bottles. - Valued at $74.95/bottle.</div>
-        <div>
-          4 (375) ml bottles per year, for three years, of our current or new
-          release Gin and Vodka. Valued at $24.95/ bottles.
-        </div>
+      <div className="flex flex-row justify-center gap-6 py-4">
+        <BarrelCard
+            title="Barrel Club 1400"
+            label="CLUB"
+            description="$1400.00"
+            accentColor="BLUE"
+            list={[
+              '24 750ml custom labeled bottles',
+              'Valued at $74.95/bottle',
+              '4 375ml bottles/year',
+              'Valued at $24.95/bottle',
+            ]}
+            width="w-[15rem] min-[500px]:w-[20rem]"
+            height="h-[28rem]"
+          />
+          <BarrelCard
+            title="Barrel Club 700"
+            label="CLUB"
+            description="$700.00"
+            accentColor="GREEN"
+            list={[
+              '12 750ml custom labeled bottles',
+              'Valued at $74.95/bottle',
+              '2 375ml bottles/year',
+              'Valued at $24.95/bottle',
+            ]}
+            width="w-[15rem] min-[500px]:w-[20rem]"
+            height="h-[28rem]"
+          />
       </div>
     </main>
   )

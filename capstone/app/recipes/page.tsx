@@ -20,7 +20,7 @@ export default function Recipes() {
           />
         }
         header="Need help creating cocktails?"
-        text="Choose one of our seasonal recipes that fit your cocktail cravings. From your all year round cocktails to your seasonal cocktails."
+        text="Indulge in the art of mixology with our curated cocktail recipes, offering a spectrum of flavors crafted from our finest spirits and showcasing the passion and expertise behind our distillery."
       />
       <div className="pb-12">
         <div className={`h-[25rem] flex items-center justify-center pt-24`}>
