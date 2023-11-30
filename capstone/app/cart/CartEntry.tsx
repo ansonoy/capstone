@@ -27,7 +27,7 @@ export default function CartEntry({
 
   return (
     <div>
-      <div className="flex flex-wrap items-center gap-3 mx-2 pb-2">
+      <div className="flex flex-wrap flex-col sm:flex-row items-center gap-3 mx-2 pb-2">
         <div className="pt-4 p-2 flex flex-col bg-gradient-to-l from-black via-gray-900 to-black text-white rounded hover:scale-[1.05] transition-all group sm:mr-5">
           <Link href={"/shop/" + Product.id}>
             <Image

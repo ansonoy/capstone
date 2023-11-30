@@ -4,13 +4,14 @@ import React from "react"
 import { motion } from "framer-motion"
 import SubmitBtn from "../components/submit-btn"
 import { sendEmail } from "@/action/sendEmail"
+import toast from "react-hot-toast"
 
 export default function Contact() {
   return (
     <div className="h-screen flex justify-center items-center">
       <motion.section
         id="contact"
-        className="mb-20 sm:mb-28 w-[min(100%, 38rem)] text-center"
+        className="mb-20 sm:mb-28 max-w-[35rem] text-center px-2"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -20,7 +21,9 @@ export default function Contact() {
           Contact us
         </h2>
         <p className="-mt-6 text-white/80">
-          Please contact me directly at{" "}
+          {
+            "Have questions or want to book a tour of the distillery? Additionally, are you interested in joining the barrel club? Contact us at "
+          }
           <a className="underline" href="mailto:anson@silverone.dev">
             whisperingdutchman@cool.com
           </a>{" "}
@@ -32,10 +35,10 @@ export default function Contact() {
             const { data, error } = await sendEmail(FormData)
 
             if (error) {
-              alert(error)
+              toast.error(error)
               return
             }
-            alert("Email sent successfully!")
+            toast.success("Email sent successfully!")
           }}
         >
           <input
