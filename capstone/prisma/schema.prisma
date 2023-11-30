@@ -64,9 +64,9 @@ model Product {
   id          String      @id @default(cuid())
   name        String
   type        String
-  price       Float       @default(0.00)
+  price       Float      @default(0.00)
   stripe      Int
-  inventory   Int
+  inventory   Boolean    @default(true)
   description String
   percentage  Int
   imageurl    String

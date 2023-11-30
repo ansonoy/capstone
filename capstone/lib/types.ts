@@ -4,7 +4,7 @@ export type Product = {
     type: string
     price: number
     stripe: number
-    inventory: number
+    inventory: boolean
     description: string
     percentage: number
     imageurl: string
