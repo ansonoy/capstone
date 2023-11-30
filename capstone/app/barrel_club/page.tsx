@@ -57,6 +57,20 @@ export default function Barrel_Club() {
             width="w-[15rem] min-[500px]:w-[20rem]"
             height="min-h-[28rem]"
           />
+          <BarrelCard
+            title="Barrel Club 500"
+            label="CLUB"
+            description="$500.00"
+            accentColor="RED"
+            list={[
+              '8 750ml custom labeled bottles',
+              'Valued at $74.95/bottle',
+              '2 375ml bottles/year',
+              'Valued at $24.95/bottle',
+            ]}
+            width="w-[15rem] min-[500px]:w-[20rem]"
+            height="min-h-[28rem]"
+          />
       </motion.div>
     </main>
   )
