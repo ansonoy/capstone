@@ -2,18 +2,19 @@
 import Image from "next/image"
 import WDD from "@/public/WDDbig.svg"
 import Link from "next/link"
-import Input from "../components/ui/input"
+import AuthInput from "../components/ui/authInput"
 import { cn } from "@/lib/utils"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import { Button } from "../components/ui/button"
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form"
-import Checkbox from "../components/ui/checkbox"
+import AuthCheckbox from "../components/ui/authCheckbox"
 import axios from "axios"
 import { toast } from "react-hot-toast"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { SafeUser } from "@/types"
+import AccessDenied from "../components/accessDenied"
 
 interface RegisterFormProps {
   currentUser: SafeUser | null
@@ -36,20 +37,12 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
 
   const router = useRouter()
 
-  useEffect(() => {
-    if (currentUser) {
-      router.push("/")
-      router.refresh()
-    }
-  }, [])
-
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true)
 
     axios
       .post("/api/register", data)
       .then(() => {
-        console.log("account created.")
         toast.success("Account created!")
 
         signIn("credentials", {
@@ -60,7 +53,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
           if (callback?.ok) {
             router.push("/")
             router.refresh()
-            console.log("logged in.")
             toast.success("Logged in!")
           }
           if (callback?.error) {
@@ -74,22 +66,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
       })
   }
   if (currentUser) {
-    return (
-      <div className="container relative flex h-screen flex-col items-center justify-center lg:px-0">
-        <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-          <div className="flex flex-col items-center space-y-2 text-center">
-            <Image
-              src={WDD}
-              width={250}
-              height={250}
-              alt="/images/WDD.png"
-              className=""
-            ></Image>
-            <h1 className="text-2xl font-bold">Signed in. Redirecting...</h1>
-          </div>
-        </div>
-      </div>
-    )
+    return <AccessDenied title="Signed In. Redirecting..." />
   }
 
   return (
@@ -114,7 +91,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
             <form>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2 relative">
-                  <Input
+                  <AuthInput
                     disabled={isLoading}
                     placeholder="Name"
                     label="name"
@@ -135,7 +112,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
                   )}
                 </div>
                 <div className="grid gap-1 py-2 relative">
-                  <Input
+                  <AuthInput
                     disabled={isLoading}
                     placeholder="Email"
                     label="Email"
@@ -156,7 +133,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
                   )}
                 </div>
                 <div className="grid gap-1 py-2 relative">
-                  <Input
+                  <AuthInput
                     disabled={isLoading}
                     placeholder="Password"
                     label="Password"
@@ -189,7 +166,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
                   </button>
                 </div>
                 <div className="flex flex-row">
-                  <Checkbox
+                  <AuthCheckbox
                     disabled={isLoading}
                     id="terms"
                     className="mr-2 mt-1"

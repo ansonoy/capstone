@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import AdminNavItem from "./adminNavItem"
 import { RxDashboard } from "react-icons/rx"
