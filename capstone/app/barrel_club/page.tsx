@@ -25,7 +25,7 @@ export default function Barrel_Club() {
             initial 10 investors, of which we have already sold 6 (thank you!!).
             Please contact us at 403-830-5663 for more information. Thank you!"
       />
-      <motion.div className="flex flex-col sm:flex-row items-center sm:justify-center gap-6 py-4"
+      <motion.div className="flex flex-col md:flex-row items-center sm:justify-center gap-6 py-4"
       initial={{opacity: 0}}
       animate={{opacity: 1}}
       transition={{delay: 0.2, duration: 0.6}}>
@@ -40,7 +40,7 @@ export default function Barrel_Club() {
               '4 375ml bottles/year',
               'Valued at $24.95/bottle',
             ]}
-            width="w-[15rem] min-[500px]:w-[20rem]"
+            width="max-w-[20rem] min-[500px]:w-[20rem]"
             height="min-h-[28rem]"
           />
           <BarrelCard
@@ -54,7 +54,7 @@ export default function Barrel_Club() {
               '2 375ml bottles/year',
               'Valued at $24.95/bottle',
             ]}
-            width="w-[15rem] min-[500px]:w-[20rem]"
+            width="max-w-[20rem] min-[500px]:w-[20rem]"
             height="min-h-[28rem]"
           />
           <BarrelCard
@@ -68,7 +68,7 @@ export default function Barrel_Club() {
               '2 375ml bottles/year',
               'Valued at $24.95/bottle',
             ]}
-            width="w-[15rem] min-[500px]:w-[20rem]"
+            width="max-w-[20rem] min-[500px]:w-[20rem]"
             height="min-h-[28rem]"
           />
       </motion.div>
