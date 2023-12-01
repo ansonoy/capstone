@@ -4,8 +4,10 @@ export default function Home() {
   return (
     <main className={``}>
       <div className={`flex flex-row h-screen items-center justify-center`}>
-        <h1 className={`text-5xl sm:text-7xl font-semibold flex flex-col`}>
-          <p>Whispering</p> <p>Dutchman</p> <p>Distillery</p>
+        <h1
+          className={`text-5xl sm:text-7xl font-semibold flex flex-col sm:flex-row`}
+        >
+          Whispering {" "}<span>Dutchman </span> <span>Distillery</span>
         </h1>
       </div>
       <div>
