@@ -13,7 +13,7 @@ export default function Heading({ image, header, text }: HeadingProps) {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col pt-[4.5rem]">
-        <motion.div className="sm:h-[24rem] overflow-hidden"
+        <motion.div className="sm:h-[24rem] 2xl:h-[38rem] overflow-hidden"
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         >{image}</motion.div>
