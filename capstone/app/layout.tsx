@@ -24,7 +24,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-gradient-to-b from-stone-700 to-black text-gray-50 text-opacity-90`}
+        className={`${inter.className} bg-gradient-to-b from-stone-800 to-black text-gray-50 text-opacity-90`}
       >
         <Header currentUser={currentUser} />
         <Toaster

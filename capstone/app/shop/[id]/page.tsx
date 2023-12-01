@@ -18,8 +18,8 @@ export default async function ProductPage({
   if (!product) notFound()
 
   return (
-    <div className="flex justify-center items-center flex-col lg:flex-row h-auto sm:h-screen pb-56 lg:pb-0 lg:pt-0 pt-32">
-      <section className="w-full flex lg:justify-end m-4">
+    <div className="flex justify-center items-center flex-col lg:flex-row min-h-screen pb-56 lg:pb-0 lg:pt-0 pt-32">
+      <section className="w-full flex justify-center lg:justify-end m-4">
         <div className="bg-gradient-to-l from-black via-gray-900 to-black rounded-2xl pb-4 pt-8">
           <Image
             src={product.imageurl}
@@ -29,7 +29,7 @@ export default async function ProductPage({
           />
         </div>
       </section>
-      <section className="w-full flex m-4 h-[35rem] flex-col pl-12 lg:pl-0">
+      <section className="w-full justify-center  flex m-4 min-h-[35rem] flex-col px-12 lg:pl-0">
         <h1 className="font-semibold text-xl opacity-80">
           Whispering Dutchman
         </h1>
@@ -41,8 +41,8 @@ export default async function ProductPage({
             <span className="text-md opacity-80">ALC./VOL.</span>
           </h2>
         </div>
-        <p className="text-md w-2/3 pt-12">{product.description}</p>
-        <hr className="my-4 w-2/3" />
+        <p className="text-md lg:w-2/3 pt-12">{product.description}</p>
+        <hr className="my-4 lg:w-2/3" />
         {product.inventory ? (
           <AddtoCartButton
             productId={product.id}
