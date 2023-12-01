@@ -1,10 +1,9 @@
 import Image from "next/image"
+import prisma from "@/lib/prisma"
 import distillery from "@/public/product-page.png"
 import Heading from "../../components/heading"
 import Products from "../../components/products-card"
-import getProducts from "@/action/get-products"
 import { redirect } from "next/navigation"
-import { red } from "@mui/material/colors"
 import Link from "next/link"
 
 type SearchPageProps = {
