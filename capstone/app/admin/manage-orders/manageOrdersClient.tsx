@@ -6,7 +6,6 @@ import type {} from "@mui/x-data-grid/themeAugmentation"
 import ActionButton from "@/app/components/actionButton"
 import {
   MdAttachMoney,
-  MdDeleteForever,
   MdLocalShipping,
   MdMoneyOff,
   MdPending,
@@ -31,6 +30,7 @@ type ExtendedOrder = Order & {
 const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
   const router = useRouter()
   let rows: any = []
+  
 
   if (orders) {
     rows = orders.map((order) => {
