@@ -83,9 +83,12 @@ model Order {
   userId    String?
   total     Float?
   isPaid    Boolean
+  status    String?
   address   String      @default("")
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
+  sName     String?
+  sEmail    String?
 
   @@map("orders")
 }
