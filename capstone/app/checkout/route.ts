@@ -40,6 +40,7 @@ export async function POST() {
       data: {
         userId: user.id,
         isPaid: false,
+        total: cart.subtotal,
         items: {
           create: cart.items.map((item) => ({
             Product: {
@@ -56,6 +57,7 @@ export async function POST() {
     newOrder = await prisma.order.create({
       data: {
         isPaid: false,
+        total: cart.subtotal,
         items: {
           create: cart.items.map((item) => ({
             Product: {
