@@ -1,36 +1,98 @@
 import React from "react"
+import Image from "next/image"
+import story1 from "@/public/story1.png"
+import story2 from "@/public/story2.png"
 
 export default function Home() {
   return (
-    <main className={`min-h-screen`}>
-      <div className={`h-screen 2xl:h-[46rem] flex flex-col`}>
-        <div className="bg-red-500 h-full">
-          hello
+    <main>
+      <div className={`h-screen 2xl:h-[41rem] flex flex-col`}>
+        <div className="h-full">hello</div>
+        <div className="pb-4">
+          <div className="flex items-end mx-4 md:mx-8 pt-12 pb-4">
+            <h1 className={`text-4xl`}>WHISPERING DUTCHMAN DISTILLERY</h1>
+          </div>
+          <hr className="w-[6rem] h-1 bg-white mx-4 md:mx-8" />
         </div>
-        <div className="flex items-end mx-4 md:mx-8">
-          <h1 className={`text-4xl`}>
-          WHISPERING DUTCHMAN DISTILLERY
-        </h1>
+      </div>
+      <div className="pt-8 md:pt-16">
+        <div className="mx-4 md:mx-8 ">
+          <h1 className={`text-4xl pb-4`}>The Story</h1>
+        <hr className="w-[6rem] h-1 bg-white" />
+        </div>
         
+        <div className="min-h-[35rem] w-full justify-center pt-4">
+          <div className="flex flex-col md:flex-row h-full">
+            <div className="md:w-1/2">
+              <div className="flex h-full items-center justify-center">
+                <Image src={story1} alt={"recipe"} />
+              </div>
+            </div>
+            <div className="md:w-1/2 p-4 md:p-6 lg:p-12 flex flex-col justify-center bg-black/30">
+              <h1 className="font-semibold text-4xl pb-4">Far Sighted</h1>
+              <div className="opacity-80">
+                What do spectacles and spirits have in common? Bruce Van
+                Leeuwen. During a successful career in the eyeglasses business,
+                with a Friday afternoon habit of a decent gin and tonic to
+                finish off the work week, Bruce became fascinated by the notion
+                of making his own gin. He set out on a path to learn as much as
+                he could about the craft distillery business. He is quick to
+                credit Sue Ransom at Krang Spirits for sharing her expertise and
+                wise counsel, helping him to navigate the choppy waters of the
+                regulatory process in Alberta. Bruce believes her groundbreaking
+                work to start her own small-batch distillery made his job
+                ultimately easier. Two years later, the toughest obstacle turned
+                out to be how to get his new still into the building. His
+                doorway simply wasn’t wide enough. He ended up having to take
+                out the adjoining wall shared with the Half Hitch and bringing
+                it though their much larger doorway, repairing the wall
+                afterward. Where there’s a wall, there’s a way!
+              </div>
+            </div>
+          </div>
         </div>
-       
+        <div className="min-h-[35rem] w-full justify-center">
+          <div className="flex flex-col md:flex-row-reverse h-full">
+            <div className="md:w-1/2">
+              <div className="flex h-full items-center justify-center">
+                <Image src={story2} alt={"recipe"} />
+              </div>
+            </div>
+            <div className="md:w-1/2 p-4 md:p-6 lg:p-12 flex flex-col justify-center bg-black/30">
+              <h1 className="font-semibold text-4xl pb-4">Award Winners</h1>
+              <div className="opacity-80">
+                Head distiller, Mitch Klassen is responsible for the delightful
+                versions of gin and vodka that are the hallmarks of Whispering
+                Dutchman. Just nine months into production and they’ve already
+                been awarded the Judges Selection at the Alberta Beverage
+                Awards, out of 800 entries. Not too shabby for the new kid on
+                the block. Drop in for a tasting of the superior
+                grapefruit-infused gin (my personal favourite) or limited
+                edition blueberry-mint vodka. And if you’re feeling especially
+                daring, take home a bottle of 50 proof Moonshine and find out if
+                it lives up to its name (but avoid driving and the operation of
+                heavy machinery). 
+              </div>
+              <div className="opacity-80 pt-4">
+                Jane Usher
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <h1 className={`flex justify-center text-4xl font-semibold h-[30rem]`}>
-          The Story
-        </h1>
-      </div>
-      <div>
-        <h1 className={`flex justify-center text-4xl font-semibold `}>
-          Location
-        </h1>
-        <div className="flex flex-col items-center justify-center w-full h-[30rem]">
-          <iframe
-            className="flex flex-col items-center justify-center w-5/6 h-5/6 rounded-2xl"
-            loading="lazy"
-            allowFullScreen
-            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8Tdr8ZVBcVMRowmzju707Q8&key=AIzaSyBYEeWyX2jqtqpSe1AGEUwal1f8dS00zjw"
-          ></iframe>
+
+      <div className="bg-black/70 w-full">
+        <div className="mx-4 md:mx-8 py-8 md:py-16">
+          <h1 className={`text-4xl pb-4`}>Location</h1>
+          <hr className="w-[6rem] h-1 bg-white" />
+          <div className="flex flex-col items-center justify-center w-full h-[30rem] pt-4">
+            <iframe
+              className="flex flex-col items-center justify-center w-full h-full rounded-2xl"
+              loading="lazy"
+              allowFullScreen
+              src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8Tdr8ZVBcVMRowmzju707Q8&key=AIzaSyBYEeWyX2jqtqpSe1AGEUwal1f8dS00zjw"
+            ></iframe>
+          </div>
         </div>
       </div>
     </main>
