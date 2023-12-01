@@ -2,13 +2,18 @@ import React from "react"
 
 export default function Home() {
   return (
-    <main className={``}>
-      <div className={`flex flex-row h-screen items-center justify-center`}>
-        <h1
-          className={`text-5xl sm:text-7xl font-semibold flex flex-col sm:flex-row`}
-        >
-          Whispering {" "}<span>Dutchman </span> <span>Distillery</span>
+    <main className={`min-h-screen`}>
+      <div className={`h-screen 2xl:h-[46rem] flex flex-col`}>
+        <div className="bg-red-500 h-full">
+          hello
+        </div>
+        <div className="flex items-end mx-4 md:mx-8">
+          <h1 className={`text-4xl`}>
+          WHISPERING DUTCHMAN DISTILLERY
         </h1>
+        
+        </div>
+       
       </div>
       <div>
         <h1 className={`flex justify-center text-4xl font-semibold h-[30rem]`}>
