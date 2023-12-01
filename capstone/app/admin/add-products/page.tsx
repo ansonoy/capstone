@@ -1,5 +1,5 @@
 import { getCurrentUser } from "@/action/getCurrentUser"
-import AddProductForm from "./AddProductClient"
+import AddProductForm from "./AddProductForm"
 import AccessDenied from "@/app/components/accessDenied"
 
 const AddProducts = async () => {

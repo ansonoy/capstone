@@ -1,4 +1,3 @@
-"use client"
 import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form"
 
 export interface AuthInputProps {
@@ -11,6 +10,8 @@ export interface AuthInputProps {
   errors: FieldErrors
   className?: string
   placeholder?: string
+  min?: number
+  max?: number
 }
 
 const AuthInput: React.FC<AuthInputProps> = ({
@@ -22,16 +23,27 @@ const AuthInput: React.FC<AuthInputProps> = ({
   register,
   errors,
   placeholder,
-  className
+  className,
+  min,
+  max
 }) => {
   return (
     <input
+      min={min}
+      max={max}
       autoComplete="off"
       id={id}
       disabled={disabled}
       placeholder={errors[id] ? "" : placeholder}
       {...register(id, { required })}
       type={type}
+      onChange={(e) => {
+        const value = Number(e.target.value)
+        const maxValue = max || Infinity
+        if (isNaN(value) || value < 0 || value > maxValue) {
+          e.target.value = ""
+        }
+      }}
       className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
         errors[id] ? "ring-red-700" : "ring-stone-300"
       } ${
