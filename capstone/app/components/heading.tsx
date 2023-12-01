@@ -12,8 +12,8 @@ type HeadingProps = {
 export default function Heading({ image, header, text }: HeadingProps) {
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col pt-[2.5rem]">
-        <motion.div className="sm:h-[24rem] 2xl:h-[39rem] overflow-hidden"
+      <div className="flex flex-col">
+        <motion.div className="sm:h-[24rem] 2xl:h-[35rem] overflow-hidden"
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         >{image}</motion.div>
