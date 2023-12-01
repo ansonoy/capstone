@@ -3,6 +3,8 @@
 import React, { useState } from "react"
 import Image from "next/image"
 import landingpage from "@/public/landingpage.png"
+import landingpage2 from "@/public/landingpage2.png"
+import landingpage3 from "@/public/landingpage3.png"
 import story1 from "@/public/story1.png"
 import story2 from "@/public/story2.png"
 import { Carousel } from "react-responsive-carousel"
@@ -10,7 +12,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 export default function Home() {
   const images = [
-    { src: landingpage, alt: "recipe1" },
+    { src: landingpage, alt: "landingpage" },
+    { src: landingpage2, alt: "landingpage" },
+    { src: landingpage3, alt: "landingpage" },
     // Add more images as needed
   ]
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
