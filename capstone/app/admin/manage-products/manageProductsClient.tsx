@@ -2,7 +2,6 @@
 import { formatPrice } from "@/util/formatPrice"
 import { Product } from "@prisma/client"
 import { DataGrid, GridColDef } from "@mui/x-data-grid"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
 import type {} from "@mui/x-data-grid/themeAugmentation"
 import ActionButton from "@/app/components/actionButton"
 import { MdCached, MdDeleteForever, MdRemoveRedEye } from "react-icons/md"
@@ -12,6 +11,8 @@ import { useCallback } from "react"
 import axios from "axios"
 import toast from "react-hot-toast"
 import { useRouter } from "next/navigation"
+import { deleteObject, getStorage, ref } from "firebase/storage"
+import firebaseApp from "@/lib/firebase"
 
 interface ManageProductsClientProps {
   products: Product[]
@@ -21,6 +22,7 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
   products
 }) => {
   const router = useRouter()
+  const storage = getStorage(firebaseApp)
   let rows: any = []
   if (products) {
     rows = products.map((product) => {
@@ -76,7 +78,7 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
     { field: "imageUrl", headerName: "Image", width: 170 },
     {
       field: "action",
-      headerName: "Action",
+      headerName: "Stock | View | Delete",
       width: 170,
       renderCell: (params) => {
         return (
@@ -87,8 +89,19 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
                 toggleStock(params.row.id, params.row.inventory)
               }}
             />
-            <ActionButton icon={MdRemoveRedEye} onClick={() => {}} />
-            <ActionButton icon={MdDeleteForever} trash onClick={() => {}} />
+            <ActionButton
+              icon={MdRemoveRedEye}
+              onClick={() => {
+                router.push(`product/${params.row.id}`)
+              }}
+            />
+            <ActionButton
+              icon={MdDeleteForever}
+              trash
+              onClick={() => {
+                deleteProduct(params.row.id, params.row.images)
+              }}
+            />
           </div>
         )
       }
@@ -111,8 +124,34 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
       })
   }, [])
 
-  const deleteProduct = useCallback((id: string, inventory: boolean) => {
-    
+  const deleteProduct = useCallback(async (id: string, images: any[]) => {
+    toast("Deleting product...")
+    //fix this later LOL google has infinite storage so whatever.
+    const handleImageDelete = async () => {
+      try {
+        for (const item of images) {
+          if (item.image) {
+            const imageRef = ref(storage, item.image)
+            await deleteObject(imageRef)
+            console.log("image deleted", item.image)
+          }
+        }
+      } catch (error) {
+        return console.log("An error occurred.", error)
+      }
+    }
+    await handleImageDelete()
+
+    axios
+      .delete(`/api/product/${id}`)
+      .then((res) => {
+        toast.success("Product deleted.")
+        router.refresh()
+      })
+      .catch((err) => {
+        toast.error("Failed to delete!")
+        console.log(err)
+      })
   }, [])
 
   return (

@@ -22,6 +22,8 @@ export async function POST(req: Request) {
 
   const session = event.data.object as Stripe.Checkout.Session
   const address = session?.customer_details?.address
+  const email = session?.customer_details?.email
+  const name = session?.customer_details?.name
 
   const addressComponents = [
     address?.line1,
@@ -41,16 +43,18 @@ export async function POST(req: Request) {
       },
       data: {
         isPaid: true,
-        address: addressString
+        address: addressString,
+        sEmail: email,
+        sName: name
       },
       include: {
         items: true
       }
     })
-   
+
     const productIds = order.items.map((item) => item.ProductId)
 
-     await prisma.product.updateMany({
+    await prisma.product.updateMany({
       where: {
         id: {
           in: [...productIds]

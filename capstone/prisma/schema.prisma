@@ -81,10 +81,14 @@ model Order {
   items     OrderItem[]
   User      User?       @relation(fields: [userId], references: [id])
   userId    String?
+  total     Float?
   isPaid    Boolean
+  status    String      @default("Pending")
   address   String      @default("")
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
+  sName     String?
+  sEmail    String?
 
   @@map("orders")
 }
@@ -125,4 +129,10 @@ model CartItem {
 enum Role {
   USER
   ADMIN
+}
+
+enum Status {
+  Paid
+  Shipped
+  Completed
 }
