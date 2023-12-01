@@ -3,14 +3,19 @@
 import React, { useState } from "react"
 import Image from "next/image"
 import landingpage from "@/public/landingpage.png"
+import landingpage2 from "@/public/landingpage2.png"
+import landingpage3 from "@/public/landingpage3.png"
 import story1 from "@/public/story1.png"
 import story2 from "@/public/story2.png"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { motion } from "framer-motion"
 
 export default function Home() {
   const images = [
-    { src: landingpage, alt: "recipe1" },
+    { src: landingpage, alt: "landingpage" },
+    { src: landingpage2, alt: "landingpage" },
+    { src: landingpage3, alt: "landingpage" }
     // Add more images as needed
   ]
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -19,7 +24,11 @@ export default function Home() {
   }
   return (
     <main>
-      <div className={`h-screen md:h-auto flex flex-col`}>
+      <motion.div
+        className={`h-screen md:h-auto flex flex-col`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <div className="w-full">
           <Carousel
             selectedItem={currentImageIndex}
@@ -34,11 +43,7 @@ export default function Home() {
           >
             {images.map((image, index) => (
               <div key={index}>
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  className=" h-[37rem]"
-                />
+                <Image src={image.src} alt={image.alt} className=" h-[37rem]" />
               </div>
             ))}
           </Carousel>
@@ -49,9 +54,13 @@ export default function Home() {
           </div>
           <hr className="w-[6rem] h-1 bg-white mx-4 md:mx-8" />
         </div>
-      </div>
+      </motion.div>
       <div className="bg-stone-950">
-        <div className="flex flex-col sm:flex-row items-center text-center sm:text-left justify-center min-h-[20rem] bg-stone-950">
+        <motion.div
+          className="flex flex-col sm:flex-row items-center text-center sm:text-left justify-center min-h-[20rem] bg-stone-950"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
           <div className=" flex justify-center text-5xl pb-4">
             Our Commitment
           </div>
@@ -64,14 +73,27 @@ export default function Home() {
             any cocktail. All our Gins and Vodkas are created to stand on their
             own as an incredible taste experience.
           </div>
-        </div>
+        </motion.div>
         <div className="pt-8 md:pt-16 ">
           <div className="mx-4 md:mx-8 ">
-            <h1 className={`text-4xl pb-4`}>The Story</h1>
+            <motion.h1
+              className={`text-4xl pb-4`}
+              initial={{ x: -100 }}
+              whileInView={{ x: 0 }}
+              viewport={{ once: true }}
+            >
+              The Story
+            </motion.h1>
             <hr className="w-[6rem] h-1 bg-white" />
           </div>
 
-          <div className="min-h-[35rem] w-full justify-center pt-4 ">
+          <motion.div
+            className="min-h-[35rem] w-full justify-center pt-4 "
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <div className="flex flex-col md:flex-row h-full">
               <div className="md:w-1/2">
                 <div className="flex h-full items-center justify-center">
@@ -101,8 +123,14 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="min-h-[35rem] w-full justify-center">
+          </motion.div>
+          <motion.div
+            className="min-h-[35rem] w-full justify-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <div className="flex flex-col md:flex-row-reverse h-full">
               <div className="md:w-1/2">
                 <div className="flex h-full items-center justify-center">
@@ -127,21 +155,34 @@ export default function Home() {
                 <div className="opacity-80 pt-4">Jane Usher</div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="bg-black/70 w-full">
           <div className="mx-4 md:mx-8 py-8 md:py-16">
-            <h1 className={`text-4xl pb-4`}>Location</h1>
+            <motion.h1
+              className={`text-4xl pb-4`}
+              initial={{ x: -100 }}
+              whileInView={{ x: 0 }}
+              viewport={{ once: true }}
+            >
+              Location
+            </motion.h1>
             <hr className="w-[6rem] h-1 bg-white" />
-            <div className="flex flex-col items-center justify-center w-full h-[30rem] pt-4">
+            <motion.div
+              className="flex flex-col items-center justify-center w-full h-[30rem] pt-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               <iframe
                 className="flex flex-col items-center justify-center w-full h-full rounded-2xl"
                 loading="lazy"
                 allowFullScreen
                 src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8Tdr8ZVBcVMRowmzju707Q8&key=AIzaSyBYEeWyX2jqtqpSe1AGEUwal1f8dS00zjw"
               ></iframe>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

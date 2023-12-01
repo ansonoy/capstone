@@ -18,7 +18,8 @@ export async function getOrder() {
   const user = await getCurrentUser()
   const order = await prisma.order.findMany({
     where: {
-      userId: user?.id
+      userId: user?.id,
+      isPaid: true
     },
     include: {
       items: {

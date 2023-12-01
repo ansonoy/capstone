@@ -47,12 +47,7 @@ export default async function Orders() {
               </div>
               <div>
                 TOTAL $
-                {order.items
-                  .reduce(
-                    (acc, item) => acc + item.quantity * item.Product.price,
-                    0.0
-                  )
-                  .toFixed(2)}
+                {order.total?.toFixed(2)}
               </div>
             </div>
           </div>
