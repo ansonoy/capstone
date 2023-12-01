@@ -1,5 +1,5 @@
 import Image from "next/image"
-import distillery from "@/public/distillery.png"
+import distillery from "@/public/product-page.png"
 import Heading from "../components/heading"
 import Products from "../components/products-card"
 import getProducts from "@/action/get-products"
