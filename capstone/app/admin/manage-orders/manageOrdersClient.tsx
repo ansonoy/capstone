@@ -1,6 +1,6 @@
 "use client"
 import { formatPrice } from "@/util/formatPrice"
-import { Order, User } from "@prisma/client"
+import { Order, Role, User } from "@prisma/client"
 import { DataGrid, GridColDef } from "@mui/x-data-grid"
 import type {} from "@mui/x-data-grid/themeAugmentation"
 import ActionButton from "@/app/components/actionButton"
@@ -20,27 +20,36 @@ import moment from "moment"
 import { FaCheck } from "react-icons/fa"
 
 interface ManageOrdersClientProps {
-  orders: ExtendedOrder[]
+  orders: (ExtendedOrder | null)[]
 }
 
 type ExtendedOrder = Order & {
-  User: User
+  User?: {
+    id: string
+    name: string | null
+    email: string | null
+    emailVerified: Date | null
+    password: string
+    image: string | null
+    createdAt: Date
+    updatedAt: Date
+    role: Role
+  } | null
 }
 
 const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
   const router = useRouter()
   let rows: any = []
-  
 
   if (orders) {
     rows = orders.map((order) => {
       return {
-        id: order.id,
-        customer: order.User ? order.User.name : order.sName,
-        date: moment(order.createdAt).fromNow(),
-        total: order.total ? formatPrice(order.total) : "N/A",
-        payment: order.isPaid,
-        status: order.status
+        id: order?.id ?? "N/A",
+        customer: order?.User?.name ?? order?.sName ?? "N/A",
+        date: moment(order?.createdAt).fromNow() ?? "N/A",
+        total: order?.total ? formatPrice(order.total) : "N/A",
+        payment: order?.isPaid,
+        status: order?.status
       }
     })
   }
@@ -143,7 +152,7 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
             <ActionButton
               icon={MdRemoveRedEye}
               onClick={() => {
-                router.push(`product/${params.row.id}`)
+                router.push(`/order/${params.row.id}`)
               }}
             />
             <ActionButton
