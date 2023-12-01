@@ -55,7 +55,7 @@ export default function Home() {
           <div className=" flex justify-center text-5xl pb-4">
             Our Commitment
           </div>
-          <hr className="w-[6rem] h-1 bg-white mb-4 mx-4" />
+          <hr className="w-[3rem] h-1 bg-white mb-4 mx-4" />
           <div className="sm:w-2/3 flex opacity-80">
             Our Gins and Vodkas are handcrafted from the finest local
             ingredients to achieve a blend of old world and new world flavours.
