@@ -83,7 +83,7 @@ model Order {
   userId    String?
   total     Float?
   isPaid    Boolean
-  status    String?
+  status    String      @default("Pending")
   address   String      @default("")
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
@@ -129,4 +129,10 @@ model CartItem {
 enum Role {
   USER
   ADMIN
+}
+
+enum Status {
+  Paid
+  Shipped
+  Completed
 }
