@@ -7,21 +7,35 @@ export default function Home() {
   return (
     <main>
       <div className={`h-screen 2xl:h-[41rem] flex flex-col`}>
-        <div className="h-full">hello</div>
-        <div className="pb-4">
+        <div className="h-full">
+          {/* <Image src={story1} alt={"recipe"} /> */}
+        </div>
+        <div className="pb-4 bg-black/70">
           <div className="flex items-end mx-4 md:mx-8 pt-12 pb-4">
             <h1 className={`text-4xl`}>WHISPERING DUTCHMAN DISTILLERY</h1>
           </div>
           <hr className="w-[6rem] h-1 bg-white mx-4 md:mx-8" />
         </div>
       </div>
-      <div className="pt-8 md:pt-16">
+      <div className="flex flex-col  sm:flex-row items-center text-center sm:text-left justify-center min-h-[20rem] bg-black/70">
+        <div className=" flex justify-center text-5xl pb-4">Our Commitment</div>
+        <hr className="w-[6rem] h-1 bg-white mb-4 mx-4" />
+        <div className="sm:w-2/3 flex opacity-80">
+          Our Gins and Vodkas are handcrafted from the finest local ingredients
+          to achieve a blend of old world and new world flavours. Our
+          contemporary Gins are complex enough to please the most discerning Gin
+          drinker, while our Vodkas are the perfect match for any cocktail. All
+          our Gins and Vodkas are created to stand on their own as an incredible
+          taste experience.
+        </div>
+      </div>
+      <div className="pt-8 md:pt-16 ">
         <div className="mx-4 md:mx-8 ">
           <h1 className={`text-4xl pb-4`}>The Story</h1>
-        <hr className="w-[6rem] h-1 bg-white" />
+          <hr className="w-[6rem] h-1 bg-white" />
         </div>
-        
-        <div className="min-h-[35rem] w-full justify-center pt-4">
+
+        <div className="min-h-[35rem] w-full justify-center pt-4 ">
           <div className="flex flex-col md:flex-row h-full">
             <div className="md:w-1/2">
               <div className="flex h-full items-center justify-center">
@@ -43,10 +57,10 @@ export default function Home() {
                 work to start her own small-batch distillery made his job
                 ultimately easier. Two years later, the toughest obstacle turned
                 out to be how to get his new still into the building. His
-                doorway simply wasn’t wide enough. He ended up having to take
+                doorway simply wasn't wide enough. He ended up having to take
                 out the adjoining wall shared with the Half Hitch and bringing
                 it though their much larger doorway, repairing the wall
-                afterward. Where there’s a wall, there’s a way!
+                afterward. Where there's a wall, there's a way!
               </div>
             </div>
           </div>
@@ -71,11 +85,9 @@ export default function Home() {
                 edition blueberry-mint vodka. And if you’re feeling especially
                 daring, take home a bottle of 50 proof Moonshine and find out if
                 it lives up to its name (but avoid driving and the operation of
-                heavy machinery). 
+                heavy machinery).
               </div>
-              <div className="opacity-80 pt-4">
-                Jane Usher
-              </div>
+              <div className="opacity-80 pt-4">Jane Usher</div>
             </div>
           </div>
         </div>
