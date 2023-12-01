@@ -1,4 +1,3 @@
-"use client"
 import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form"
 
 export interface AuthInputProps {
@@ -11,6 +10,8 @@ export interface AuthInputProps {
   errors: FieldErrors
   className?: string
   placeholder?: string
+  min?: number
+  max?: number
 }
 
 const AuthInput: React.FC<AuthInputProps> = ({
@@ -22,10 +23,14 @@ const AuthInput: React.FC<AuthInputProps> = ({
   register,
   errors,
   placeholder,
-  className
+  className,
+  min,
+  max
 }) => {
   return (
     <input
+      min={min}
+      max={max}
       autoComplete="off"
       id={id}
       disabled={disabled}
