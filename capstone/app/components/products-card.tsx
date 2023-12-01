@@ -40,7 +40,6 @@ export default function Products({ product }: ProductsProps) {
             <div className=" ">{product.type}</div>
             <div>
               <hr></hr>
-              <hr></hr>
             </div>
             <div className="flex flex-row justify-between">
               <div className="flex">${product.price}</div>

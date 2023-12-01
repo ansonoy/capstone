@@ -43,7 +43,7 @@ export default function AddtoCartButton({
         <option value={0}>0</option>
         {quantityOptions}
       </select>
-      <hr className="my-4 w-2/3" />
+      <hr className="my-4 lg:w-2/3" />
       <div className="flex items-center gap-2">
         <button
           className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] text-white rounded-2xl ouline-none transition-all focus:scale-110 hover:scale-110 active:scale-105 bg-orange-500  disabled:scale-100 disabled:bg-opacity-65"

@@ -25,7 +25,7 @@ export default function Barrel_Club() {
             initial 10 investors, of which we have already sold 6 (thank you!!).
             Please contact us at 403-830-5663 for more information. Thank you!"
       />
-      <motion.div className="flex flex-col md:flex-row items-center sm:justify-center gap-6 py-4 px-2"
+      <motion.div className="flex flex-col md:flex-row items-center sm:justify-center gap-6 py-8 px-2"
       initial={{opacity: 0}}
       animate={{opacity: 1}}
       transition={{delay: 0.2, duration: 0.6}}>

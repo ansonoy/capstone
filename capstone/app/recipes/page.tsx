@@ -95,7 +95,9 @@ export default function Recipes() {
               </div>
             </div>
             <div className="md:w-1/2 p-4 md:p-6 lg:p-12 flex flex-col justify-center">
-              <h1 className="font-semibold text-4xl pb-4">Canadian Maple Caesar</h1>
+              <h1 className="font-semibold text-4xl pb-4">
+                Canadian Maple Caesar
+              </h1>
               <div className="flex flex-col pb-4 opacity-80">
                 1.5 oz Whispering Dutchman Distillery Canadian Vodka{" "}
                 <span>3 oz Clamato juice</span>
