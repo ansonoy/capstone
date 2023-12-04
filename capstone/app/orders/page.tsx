@@ -42,13 +42,8 @@ export default async function Orders() {
             </div>
             <div className="flex flex-col items-end">
               <div>ORDER # {order.id} </div>
-              <div>
-                ORDER DATE {order.updatedAt.toISOString().slice(0, 10)}
-              </div>
-              <div>
-                TOTAL $
-                {order.total?.toFixed(2)}
-              </div>
+              <div>ORDER DATE {order.updatedAt.toISOString().slice(0, 10)}</div>
+              <div>TOTAL ${order.total?.toFixed(2)}</div>
             </div>
           </div>
           <hr className="pb-2" />
