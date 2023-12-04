@@ -288,7 +288,7 @@ const AddProductForm = () => {
               "ring-red-700 ring-2": errors.percentage
             })}
           />
-          {errors.name && (
+          {errors.percentage && (
             <div className="absolute left-3 top-2 pointer-events-none text-red-500">
               Percentage is required
             </div>
